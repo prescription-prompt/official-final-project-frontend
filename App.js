@@ -1,20 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native';
+import { useState } from 'react';
+import Header from './components/Header';
 
 export default function App() {
+  // this state will change based on the page you are on
+  // Homepage = "Hi, Username" || Add Medication = "Add Medication"
+  const [Title, setTitle] = useState('Hi, Username');
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <>
       <StatusBar style='auto' />
-    </View>
+      <SafeAreaView>
+        <Header title={Title} />
+      </SafeAreaView>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
