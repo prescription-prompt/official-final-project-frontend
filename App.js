@@ -1,18 +1,24 @@
+import { SafeAreaView, Text } from 'react-native';
+import { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView } from 'react-native';
-import { useState } from 'react';
 import Header from './components/Header';
 
 export default function App() {
-  // this state will change based on the page you are on
-  // Homepage = "Hi, Username" || Add Medication = "Add Medication"
   const [Title, setTitle] = useState('Hi, Username');
+  const [Page, setPage] = useState('Homepage');
+
+  useEffect(() => {
+    if (Page === 'Homepage') setTitle('Hi, Username');
+    if (Page === 'AddMedication') setTitle('Add Medication');
+  }, [Page]);
 
   return (
     <>
       <StatusBar style='auto' />
       <SafeAreaView>
-        <Header title={Title} />
+        <Header title={Title} setPage={setPage} />
+        {Page === 'Homepage' && <Text>Homepage Component</Text>}
+        {Page === 'AddMedication' && <Text>AddMedication Component</Text>}
       </SafeAreaView>
     </>
   );
