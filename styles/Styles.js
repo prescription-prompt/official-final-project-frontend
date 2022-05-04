@@ -1,5 +1,12 @@
 import { StyleSheet, Platform, StatusBar } from 'react-native';
 
+export const GeneralStyles = StyleSheet.create({
+  heading: {
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+});
+
 export const HeaderStyles = StyleSheet.create({
   container: {
     display: 'flex',
@@ -8,10 +15,6 @@ export const HeaderStyles = StyleSheet.create({
     marginTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
     padding: 10,
     borderBottomWidth: 2,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
   },
   menu_toggle: {
     paddingVertical: 2,

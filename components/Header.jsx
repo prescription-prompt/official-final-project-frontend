@@ -1,6 +1,6 @@
 import { Text, View, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
-import { HeaderStyles } from '../styles/Styles';
+import { GeneralStyles, HeaderStyles } from '../styles/Styles';
 
 export default function Header({ title, setPage }) {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -13,7 +13,7 @@ export default function Header({ title, setPage }) {
   return (
     <>
       <View style={HeaderStyles.container}>
-        <Text style={HeaderStyles.title}>{title}</Text>
+        <Text style={GeneralStyles.heading}>{title}</Text>
         <TouchableOpacity onPress={() => setMenuIsOpen(!menuIsOpen)}>
           <Text style={HeaderStyles.menu_toggle}>M</Text>
         </TouchableOpacity>
