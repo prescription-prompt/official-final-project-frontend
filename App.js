@@ -1,20 +1,25 @@
+import { SafeAreaView, Text } from 'react-native';
+import { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import Header from './components/Header';
 
 export default function App() {
+  const [Title, setTitle] = useState('Hi, Username');
+  const [Page, setPage] = useState('Homepage');
+
+  useEffect(() => {
+    if (Page === 'Homepage') setTitle('Hi, Username');
+    if (Page === 'AddMedication') setTitle('Add Medication');
+  }, [Page]);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <>
       <StatusBar style='auto' />
-    </View>
+      <SafeAreaView>
+        <Header title={Title} setPage={setPage} />
+        {Page === 'Homepage' && <Text>Homepage Component</Text>}
+        {Page === 'AddMedication' && <Text>AddMedication Component</Text>}
+      </SafeAreaView>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
