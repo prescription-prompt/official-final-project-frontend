@@ -2,6 +2,8 @@ import { SafeAreaView, Text } from 'react-native';
 import { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import Header from './components/Header';
+import HomePage from './components/HomePage';
+
 
 export default function App() {
   const [Title, setTitle] = useState('Hi, Username');
@@ -17,8 +19,8 @@ export default function App() {
       <StatusBar style='auto' />
       <SafeAreaView>
         <Header title={Title} setPage={setPage} />
-        {Page === 'Homepage' && <Text>Homepage Component</Text>}
-        {Page === 'AddMedication' && <Text>AddMedication Component</Text>}
+        {Page === 'Homepage' && <HomePage />}
+        {Page === 'AddMedication' && <Text>Add Medication Component</Text>}
       </SafeAreaView>
     </>
   );
