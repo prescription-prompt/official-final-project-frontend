@@ -30,8 +30,8 @@ export const HeaderStyles = StyleSheet.create({
     borderRadius: 10,
   },
   menu_button: {
-    marginLeft: 30,
-    marginBottom: 30,
+    marginLeft: 20,
+    marginBottom: 20,
     padding: 10,
     width: '50%',
     borderWidth: 2,

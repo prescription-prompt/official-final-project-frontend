@@ -23,7 +23,7 @@ export default function Header({ title, setPage }) {
         style={[HeaderStyles.menu, { display: menuIsOpen ? 'flex' : 'none' }]}
       >
         <TouchableOpacity
-          style={[HeaderStyles.menu_button, { marginTop: 30 }]}
+          style={[HeaderStyles.menu_button, { marginTop: 20 }]}
           onPress={() => changePage('Homepage')}
         >
           <Text>Homepage</Text>
