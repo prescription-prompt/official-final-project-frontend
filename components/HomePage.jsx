@@ -1,11 +1,9 @@
-import { Text, View } from 'react-native';
+import NextPrompt from './NextPrompt';
 
 export default function HomePage({}) {
   return (
     <>
-      <View>
-        <Text>Homepage</Text>
-      </View>
+      <NextPrompt />
     </>
   );
 }

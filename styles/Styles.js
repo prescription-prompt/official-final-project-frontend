@@ -38,3 +38,28 @@ export const HeaderStyles = StyleSheet.create({
     borderRadius: 10,
   },
 });
+
+export const NextPromptStyles = StyleSheet.create({
+  container: {
+    alignSelf: 'center',
+    alignItems: 'center',
+    width: '90%',
+    height: '32%',
+    marginTop: 20,
+    borderWidth: 2,
+    borderRadius: 10,
+  },
+  remember: {
+    marginTop: 10,
+  },
+  medication: {
+    fontSize: 28,
+  },
+  flex: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  timer: {
+    fontSize: 28,
+  },
+});
