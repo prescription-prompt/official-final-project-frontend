@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import Header from './components/Header';
 import HomePage from './components/HomePage';
 import SignIn from './components/SignIn';
+import AddMedication from './components/AddMedication';
 
 export default function App() {
   const [LoggedIn, setLoggedIn] = useState(false);
@@ -22,7 +23,7 @@ export default function App() {
       <SafeAreaView>
         <Header title={Title} loggedIn={LoggedIn} setLoggedIn={setLoggedIn} setPage={setPage} />
         {LoggedIn ? Page === 'Homepage' && <HomePage /> : Page === 'Homepage' && <SignIn setLoggedIn={setLoggedIn} />}
-        {Page === 'AddMedication' && <Text>Add Medication</Text>}
+        {Page === 'AddMedication' && <AddMedication />}
       </SafeAreaView>
     </>
   );
