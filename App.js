@@ -4,7 +4,6 @@ import { StatusBar } from 'expo-status-bar';
 import Header from './components/Header';
 import HomePage from './components/HomePage';
 
-
 export default function App() {
   const [Title, setTitle] = useState('Hi, Username');
   const [Page, setPage] = useState('Homepage');

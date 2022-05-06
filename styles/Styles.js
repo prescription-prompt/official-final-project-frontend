@@ -63,3 +63,35 @@ export const NextPromptStyles = StyleSheet.create({
     fontSize: 28,
   },
 });
+
+export const MedCalendarStyles = StyleSheet.create({
+  container: {
+    alignSelf: 'center',
+    width: '90%',
+    marginTop: 20,
+    padding: 10,
+    borderWidth: 2,
+    borderRadius: 10,
+  },
+  outerContainer: {
+    height: '60%',
+  },
+  flex: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  leftCol: {
+    textAlign: 'center',
+    borderRightColor: '#000000',
+    borderRightWidth: 2,
+    padding: 5,
+    width: '33%',
+  },
+  rightCol: {
+    padding: 5,
+    textAlign: 'center',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
+});
