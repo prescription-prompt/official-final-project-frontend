@@ -13,6 +13,7 @@ export default function Header({ title, loggedIn, setLoggedIn, setPage }) {
   const SignOut = () => {
     setMenuIsOpen(false);
     setLoggedIn(false);
+    setPage('Homepage');
   };
 
   return (

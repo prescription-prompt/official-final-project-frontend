@@ -22,8 +22,12 @@ export default function App() {
       <StatusBar style='auto' />
       <SafeAreaView>
         <Header title={Title} loggedIn={LoggedIn} setLoggedIn={setLoggedIn} setPage={setPage} />
-        {LoggedIn ? Page === 'Homepage' && <HomePage /> : Page === 'Homepage' && <SignIn setLoggedIn={setLoggedIn} />}
-        {Page === 'AddMedication' && <AddMedication />}
+        {LoggedIn
+          ? Page === 'Homepage' && <HomePage />
+          : Page === 'Homepage' && <SignIn setLoggedIn={setLoggedIn} setPage={setPage} />}
+        {LoggedIn
+          ? Page === 'AddMedication' && <AddMedication />
+          : Page === 'AddMedication' && <SignIn setLoggedIn={setLoggedIn} setPage={setPage} />}
       </SafeAreaView>
     </>
   );

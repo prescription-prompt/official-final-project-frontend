@@ -77,6 +77,14 @@ export const SignInStyles = StyleSheet.create({
     marginTop: 50,
     marginBottom: 50,
   },
+  input: {
+    alignSelf: 'center',
+    width: '90%',
+    marginBottom: 20,
+    padding: 15,
+    borderWidth: 1,
+    borderRadius: 10,
+  },
   signin_button: {
     alignSelf: 'center',
     borderWidth: 1,
