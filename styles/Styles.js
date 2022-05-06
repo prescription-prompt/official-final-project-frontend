@@ -63,3 +63,29 @@ export const NextPromptStyles = StyleSheet.create({
     fontSize: 28,
   },
 });
+
+export const SignInStyles = StyleSheet.create({
+  image: {
+    alignSelf: 'center',
+    width: 200,
+    height: 200,
+    marginTop: 50,
+    marginBottom: 50,
+  },
+  input: {
+    alignSelf: 'center',
+    width: '90%',
+    marginBottom: 20,
+    padding: 15,
+    borderWidth: 1,
+    borderRadius: 10,
+  },
+  signin_button: {
+    alignSelf: 'center',
+    borderWidth: 1,
+    padding: 15,
+    borderRadius: 10,
+    width: '90%',
+    borderColor: '#19ba00',
+  },
+});
