@@ -1,4 +1,4 @@
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, ScrollView } from 'react-native';
 import { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import Header from './components/Header';

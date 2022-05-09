@@ -1,4 +1,4 @@
-import { View, Image, Text, TextInput, TouchableOpacity } from 'react-native';
+import { ScrollView, Image, Text, TextInput, TouchableOpacity } from 'react-native';
 import { SignInStyles } from '../styles/Styles';
 import { useState } from 'react';
 import axios from 'axios';
@@ -18,7 +18,7 @@ export default function SignIn({ setLoggedIn, setPage, setUser }) {
   };
 
   return (
-    <View>
+    <ScrollView style={{ width: '100%', height: '100%' }}>
       <Image style={SignInStyles.image} source={require('../assets/medical.png')} />
 
       <TextInput
@@ -45,6 +45,6 @@ export default function SignIn({ setLoggedIn, setPage, setUser }) {
       <TouchableOpacity onPress={() => setPage('SignUp')} style={SignInStyles.change_page_btn}>
         <Text style={SignInStyles.change_page_btn_text}>CREATE AN ACCOUNT</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 }

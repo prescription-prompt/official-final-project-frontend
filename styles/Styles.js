@@ -72,10 +72,8 @@ export const NextPromptStyles = StyleSheet.create({
 export const SignInStyles = StyleSheet.create({
   image: {
     alignSelf: 'center',
-    width: 200,
-    height: 200,
-    marginTop: 50,
-    marginBottom: 50,
+    width: 160,
+    height: 160,
   },
   input: {
     alignSelf: 'center',
@@ -100,6 +98,7 @@ export const SignInStyles = StyleSheet.create({
   change_page_btn: {
     alignSelf: 'center',
     marginTop: 5,
+    marginBottom: 20,
     width: '40%',
     borderWidth: 1,
     borderRadius: 4,
