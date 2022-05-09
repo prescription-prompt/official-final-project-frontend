@@ -3,24 +3,31 @@ import { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import Header from './components/Header';
 import HomePage from './components/HomePage';
-
+import SignIn from './components/SignIn';
+import AddMedication from './components/AddMedication';
 
 export default function App() {
-  const [Title, setTitle] = useState('Hi, Username');
+  const [LoggedIn, setLoggedIn] = useState(false);
+  const [Title, setTitle] = useState('HomePage');
   const [Page, setPage] = useState('Homepage');
 
   useEffect(() => {
-    if (Page === 'Homepage') setTitle('Hi, Username');
-    if (Page === 'AddMedication') setTitle('Add Medication');
-  }, [Page]);
+    if (!LoggedIn) setTitle('Sign In to your Account');
+    if (LoggedIn && Page === 'Homepage') setTitle('Hi, Username');
+    if (LoggedIn && Page === 'AddMedication') setTitle('Add Medication');
+  }, [Page, LoggedIn]);
 
   return (
     <>
       <StatusBar style='auto' />
       <SafeAreaView>
-        <Header title={Title} setPage={setPage} />
-        {Page === 'Homepage' && <HomePage />}
-        {Page === 'AddMedication' && <Text>Add Medication Component</Text>}
+        <Header title={Title} loggedIn={LoggedIn} setLoggedIn={setLoggedIn} setPage={setPage} />
+        {LoggedIn
+          ? Page === 'Homepage' && <HomePage setPage={setPage} />
+          : Page === 'Homepage' && <SignIn setLoggedIn={setLoggedIn} setPage={setPage} />}
+        {LoggedIn
+          ? Page === 'AddMedication' && <AddMedication />
+          : Page === 'AddMedication' && <SignIn setLoggedIn={setLoggedIn} setPage={setPage} />}
       </SafeAreaView>
     </>
   );

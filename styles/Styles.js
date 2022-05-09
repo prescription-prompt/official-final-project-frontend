@@ -5,6 +5,11 @@ export const GeneralStyles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
   },
+  flex: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
 });
 
 export const HeaderStyles = StyleSheet.create({
@@ -44,8 +49,8 @@ export const NextPromptStyles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center',
     width: '90%',
-    height: '32%',
     marginTop: 20,
+    paddingBottom: 10,
     borderWidth: 2,
     borderRadius: 10,
   },
@@ -60,6 +65,139 @@ export const NextPromptStyles = StyleSheet.create({
     flexDirection: 'row',
   },
   timer: {
+    fontSize: 28,
+  },
+});
+
+export const MedCalendarStyles = StyleSheet.create({
+  container: {
+    alignSelf: 'center',
+    width: '90%',
+    marginTop: 20,
+    padding: 10,
+    borderWidth: 2,
+    borderRadius: 10,
+  },
+  outerContainer: {
+    height: '60%',
+  },
+  flex: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  leftCol: {
+    textAlign: 'center',
+    borderRightColor: '#000000',
+    borderRightWidth: 2,
+    padding: 5,
+    width: '33%',
+  },
+  rightCol: {
+    padding: 5,
+    textAlign: 'center',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
+});
+export const SignInStyles = StyleSheet.create({
+  image: {
+    alignSelf: 'center',
+    width: 200,
+    height: 200,
+    marginTop: 50,
+    marginBottom: 50,
+  },
+  input: {
+    alignSelf: 'center',
+    width: '90%',
+    marginBottom: 20,
+    padding: 15,
+    borderWidth: 1,
+    borderRadius: 10,
+  },
+  signin_button: {
+    alignSelf: 'center',
+    borderWidth: 1,
+    padding: 15,
+    borderRadius: 10,
+    width: '90%',
+    borderColor: '#19ba00',
+  },
+});
+
+export const AddMedicationStyles = StyleSheet.create({
+  input: {
+    alignSelf: 'center',
+    width: '90%',
+    marginBottom: 20,
+    padding: 15,
+    borderWidth: 1,
+    borderRadius: 10,
+  },
+  split: {
+    alignSelf: 'center',
+    marginBottom: 20,
+    padding: 15,
+    borderWidth: 1,
+    borderRadius: 10,
+  },
+  split_left: {
+    width: '52%',
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 0,
+  },
+  split_right: {
+    width: '38%',
+    borderLeftWidth: 0,
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
+  },
+  split_left_triple: {
+    width: '30%',
+    borderRightWidth: 0,
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 0,
+  },
+  split_middle_triple: {
+    width: '30%',
+    borderRadius: 0,
+  },
+  split_right_triple: {
+    width: '30%',
+    borderLeftWidth: 0,
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
+  },
+  button_text: {
+    fontWeight: 'bold',
+    alignSelf: 'center',
+  },
+  submit_button: {
+    borderWidth: 1,
+    padding: 15,
+    borderRadius: 10,
+    width: '51%',
+    marginRight: '2%',
+    borderColor: '#19ba00',
+  },
+  clear_button: {
+    borderWidth: 1,
+    padding: 15,
+    borderRadius: 10,
+    width: '37%',
+    borderColor: '#fd5452',
+  },
+  add_med_button: {
+    alignSelf: 'center',
+    alignItems: 'center',
+    width: '90%',
+    height: '10%',
+    marginTop: 20,
+    borderWidth: 2,
+    borderRadius: 10,
+  },
+  add_med_button_text: {
     fontSize: 28,
   },
 });
