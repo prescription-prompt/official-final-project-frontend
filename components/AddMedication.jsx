@@ -11,7 +11,7 @@ export default function AddMedication() {
   const [Type, setType] = useState('');
   const [Frequency, setFrequency] = useState('');
   const [Period, setPeriod] = useState('');
-  const [Date, setDate] = useState('');
+  const [FormDate, setFormDate] = useState('');
   const [Month, setMonth] = useState('');
   const [Time, setTime] = useState('');
   const [Note, setNote] = useState('');
@@ -22,6 +22,9 @@ export default function AddMedication() {
     if (Period === 'hour') increment = 3600000;
     if (Period === 'day') increment = 86400000;
     if (Period === 'week') increment = 604800000;
+    const firstDose =
+      Date.UTC(new Date().getFullYear(), Month, FormDate, parseInt(Time.substring(0, 2)), parseInt(Time.slice(-2)), 0) /
+      1000;
 
     setPrescription({
       medication: Medication,
@@ -31,9 +34,7 @@ export default function AddMedication() {
       type: Type,
       frequency: Frequency * increment,
       period: Period,
-      date: Date,
-      month: Month,
-      time: Time,
+      firstDose: firstDose,
       note: Note,
     });
   };
@@ -47,7 +48,7 @@ export default function AddMedication() {
     setAmount('');
     setFrequency('');
     setPeriod('');
-    setDate('');
+    setFormDate('');
     setMonth('');
     setTime('');
     setNote('');
@@ -69,7 +70,7 @@ export default function AddMedication() {
     } else if (false) {
       // TODO: Fix frequency validation
       SendAlert('Please enter a Frequency.');
-    } else if (Prescription?.date?.length < 1) {
+    } else if (Prescription?.FormDate?.length < 1) {
       SendAlert('Please enter a Date.');
     } else if (Prescription?.month?.length < 1) {
       SendAlert('Please enter a Month.');
@@ -169,9 +170,9 @@ export default function AddMedication() {
         <View style={GeneralStyles.flex}>
           <View style={[AddMedicationStyles.split, AddMedicationStyles.split_left_triple]}>
             <RNPickerSelect
-              onValueChange={(value) => setDate(value)}
+              onValueChange={(value) => setFormDate(value)}
               placeholder={{ label: 'First Date' }}
-              value={Date}
+              value={FormDate}
               items={[
                 { label: '1st', value: 1 },
                 { label: '2nd', value: 2 },
@@ -213,18 +214,18 @@ export default function AddMedication() {
               placeholder={{ label: 'First Month' }}
               value={Month}
               items={[
-                { label: 'January', value: 'january' },
-                { label: 'February', value: 'february' },
-                { label: 'March', value: 'march' },
-                { label: 'April', value: 'april' },
-                { label: 'May', value: 'may' },
-                { label: 'June', value: 'june' },
-                { label: 'July', value: 'july' },
-                { label: 'August', value: 'august' },
-                { label: 'September', value: 'september' },
-                { label: 'October', value: 'october' },
-                { label: 'November', value: 'november' },
-                { label: 'December', value: 'december' },
+                { label: 'January', value: 0 },
+                { label: 'February', value: 1 },
+                { label: 'March', value: 2 },
+                { label: 'April', value: 3 },
+                { label: 'May', value: 4 },
+                { label: 'June', value: 5 },
+                { label: 'July', value: 6 },
+                { label: 'August', value: 7 },
+                { label: 'September', value: 8 },
+                { label: 'October', value: 9 },
+                { label: 'November', value: 10 },
+                { label: 'December', value: 11 },
               ]}
             />
           </View>
