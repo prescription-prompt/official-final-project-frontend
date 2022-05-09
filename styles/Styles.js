@@ -98,6 +98,8 @@ export const MedCalendarStyles = StyleSheet.create({
     textAlign: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
+  },
+});
 export const SignInStyles = StyleSheet.create({
   image: {
     alignSelf: 'center',
