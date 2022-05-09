@@ -10,7 +10,7 @@ export default function SignIn({ setLoggedIn, setPage, setUser }) {
   const [Password, setPassword] = useState('');
 
   const signIn = async () => {
-    const { data } = await axios.post(`http://localhost:9090/api/users/`, {
+    const { data } = await axios.post(`http://192.168.0.8:9090/api/users/`, {
       firstName: FirstName,
       lastName: LastName,
       email: Email,

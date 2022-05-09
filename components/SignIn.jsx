@@ -9,7 +9,7 @@ export default function SignIn({ setLoggedIn, setPage, setUser }) {
   const [Password, setPassword] = useState('DEO28HDM4DF');
 
   const SignIn = async () => {
-    const { data } = await axios.get(`http://localhost:9090/api/users/${Email}`);
+    const { data } = await axios.get(`http://192.168.0.8:9090/api/users/${Email}`);
     if (Password === data.user.password) {
       setUser(data.user);
       setLoggedIn(true);
