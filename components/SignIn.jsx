@@ -5,8 +5,8 @@ import axios from 'axios';
 
 export default function SignIn({ setLoggedIn }) {
   // Set default Email and Password for testing
-  const [Email, setEmail] = useState('testymctestface@gmail.com');
-  const [Password, setPassword] = useState('testpassword');
+  const [Email, setEmail] = useState('lacus@hotmail.edu');
+  const [Password, setPassword] = useState('DEO28HDM4DF');
 
   const SignIn = async () => {
     const { data } = await axios.get(`http://localhost:9090/api/users/${Email}`);
