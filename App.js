@@ -23,7 +23,7 @@ export default function App() {
       <SafeAreaView>
         <Header title={Title} loggedIn={LoggedIn} setLoggedIn={setLoggedIn} setPage={setPage} />
         {LoggedIn
-          ? Page === 'Homepage' && <HomePage />
+          ? Page === 'Homepage' && <HomePage setPage={setPage} />
           : Page === 'Homepage' && <SignIn setLoggedIn={setLoggedIn} setPage={setPage} />}
         {LoggedIn
           ? Page === 'AddMedication' && <AddMedication />
