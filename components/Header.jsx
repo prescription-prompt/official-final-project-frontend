@@ -19,19 +19,11 @@ export default function Header({ title, setPage }) {
         </TouchableOpacity>
       </View>
 
-      <View
-        style={[HeaderStyles.menu, { display: menuIsOpen ? 'flex' : 'none' }]}
-      >
-        <TouchableOpacity
-          style={[HeaderStyles.menu_button, { marginTop: 20 }]}
-          onPress={() => changePage('Homepage')}
-        >
+      <View style={[HeaderStyles.menu, { display: menuIsOpen ? 'flex' : 'none' }]}>
+        <TouchableOpacity style={[HeaderStyles.menu_button, { marginTop: 20 }]} onPress={() => changePage('Homepage')}>
           <Text>Homepage</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={HeaderStyles.menu_button}
-          onPress={() => changePage('AddMedication')}
-        >
+        <TouchableOpacity style={HeaderStyles.menu_button} onPress={() => changePage('AddMedication')}>
           <Text>Add Medication</Text>
         </TouchableOpacity>
       </View>

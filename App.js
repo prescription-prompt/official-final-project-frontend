@@ -19,7 +19,7 @@ export default function App() {
       <StatusBar style='auto' />
       <SafeAreaView>
         <Header title={Title} setPage={setPage} />
-        {Page === 'Homepage' && <HomePage />}
+        {Page === 'Homepage' && <HomePage setPage={setPage} />}
         {Page === 'AddMedication' && <AddMedication />}
       </SafeAreaView>
     </>

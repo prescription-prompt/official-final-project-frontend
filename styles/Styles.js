@@ -131,4 +131,16 @@ export const AddMedicationStyles = StyleSheet.create({
     width: '37%',
     borderColor: '#fd5452',
   },
+  add_med_button: {
+    alignSelf: 'center',
+    alignItems: 'center',
+    width: '90%',
+    height: '10%',
+    marginTop: 20,
+    borderWidth: 2,
+    borderRadius: 10,
+  },
+  add_med_button_text: {
+    fontSize: 28,
+  },
 });
