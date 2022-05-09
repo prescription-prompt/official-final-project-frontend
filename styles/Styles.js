@@ -93,6 +93,23 @@ export const SignInStyles = StyleSheet.create({
     width: '90%',
     borderColor: '#19ba00',
   },
+  change_page: {
+    alignSelf: 'center',
+    marginTop: 10,
+  },
+  change_page_btn: {
+    alignSelf: 'center',
+    marginTop: 5,
+    width: '40%',
+    borderWidth: 1,
+    borderRadius: 4,
+    borderColor: '#005EB8',
+  },
+  change_page_btn_text: {
+    alignSelf: 'center',
+    fontSize: 14,
+    color: '#005EB8',
+  },
 });
 
 export const AddMedicationStyles = StyleSheet.create({

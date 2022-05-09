@@ -3,7 +3,7 @@ import { SignInStyles } from '../styles/Styles';
 import { useState } from 'react';
 import axios from 'axios';
 
-export default function SignIn({ setLoggedIn, setPage }) {
+export default function SignIn({ setLoggedIn, setPage, setUser }) {
   // Set default Email and Password for testing
   const [Email, setEmail] = useState('lacus@hotmail.edu');
   const [Password, setPassword] = useState('DEO28HDM4DF');
@@ -11,6 +11,7 @@ export default function SignIn({ setLoggedIn, setPage }) {
   const SignIn = async () => {
     const { data } = await axios.get(`http://localhost:9090/api/users/${Email}`);
     if (Password === data.user.password) {
+      setUser(data.user);
       setLoggedIn(true);
       setPage('Homepage');
     }
@@ -40,12 +41,10 @@ export default function SignIn({ setLoggedIn, setPage }) {
         <Text style={{ textAlign: 'center' }}>SIGN IN</Text>
       </TouchableOpacity>
 
-      <Text>
-        Dont have an account?
-        <TouchableOpacity onPress={() => setPage('SignUp')}>
-          <Text>SIGN UP</Text>
-        </TouchableOpacity>
-      </Text>
+      <Text style={SignInStyles.change_page}>Dont have an account?</Text>
+      <TouchableOpacity onPress={() => setPage('SignUp')} style={SignInStyles.change_page_btn}>
+        <Text style={SignInStyles.change_page_btn_text}>CREATE AN ACCOUNT</Text>
+      </TouchableOpacity>
     </View>
   );
 }
