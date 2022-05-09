@@ -62,7 +62,7 @@ export default function SignIn({ setLoggedIn, setPage }) {
 
       <Text>
         Already have an account?
-        <TouchableOpacity onPress={() => setPage('Homepage')}>
+        <TouchableOpacity onPress={() => setPage('SignIn')}>
           <Text>SIGN IN</Text>
         </TouchableOpacity>
       </Text>

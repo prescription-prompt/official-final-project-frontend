@@ -10,7 +10,10 @@ export default function SignIn({ setLoggedIn, setPage }) {
 
   const SignIn = async () => {
     const { data } = await axios.get(`http://localhost:9090/api/users/${Email}`);
-    if (Password === data.user.password) setLoggedIn(true);
+    if (Password === data.user.password) {
+      setLoggedIn(true);
+      setPage('Homepage');
+    }
   };
 
   return (

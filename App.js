@@ -10,7 +10,7 @@ import AddMedication from './components/AddMedication';
 export default function App() {
   const [LoggedIn, setLoggedIn] = useState(false);
   const [Title, setTitle] = useState('Hi, Username');
-  const [Page, setPage] = useState('Homepage');
+  const [Page, setPage] = useState('SignIn');
 
   useEffect(() => {
     if (!LoggedIn) setTitle('Sign In to your Account');
@@ -24,8 +24,12 @@ export default function App() {
       <StatusBar style='auto' />
       <SafeAreaView>
         <Header title={Title} loggedIn={LoggedIn} setLoggedIn={setLoggedIn} setPage={setPage} />
+        {!LoggedIn ? Page === 'SignIn' && <SignIn setLoggedIn={setLoggedIn} setPage={setPage} /> : null}
+        {!LoggedIn ? Page === 'SignUp' && <SignUp setLoggedIn={setLoggedIn} setPage={setPage} /> : null}
+        {LoggedIn ? Page === 'Homepage' && <HomePage setPage={setPage} /> : null}
+        {LoggedIn ? Page === 'AddMedication' && <AddMedication /> : null}
 
-        {!LoggedIn
+        {/* {!LoggedIn
           ? Page === 'SignUp' && <SignUp setLoggedIn={setLoggedIn} setPage={setPage} />
           : Page === 'SignUp' && <SignIn setLoggedIn={setLoggedIn} setPage={setPage} />}
 
@@ -35,7 +39,7 @@ export default function App() {
 
         {LoggedIn
           ? Page === 'AddMedication' && <AddMedication />
-          : Page === 'AddMedication' && <SignIn setLoggedIn={setLoggedIn} setPage={setPage} />}
+          : Page === 'AddMedication' && <SignIn setLoggedIn={setLoggedIn} setPage={setPage} />} */}
       </SafeAreaView>
     </>
   );
