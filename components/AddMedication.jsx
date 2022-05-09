@@ -23,7 +23,8 @@ export default function AddMedication() {
     if (Period === 'day') increment = 86400000;
     if (Period === 'week') increment = 604800000;
     const firstDose =
-      Date.UTC(2022, Month, FormDate, parseInt(Time.substring(0, 2)), parseInt(Time.slice(-2)), 0) / 1000;
+      Date.UTC(new Date().getFullYear(), Month, FormDate, parseInt(Time.substring(0, 2)), parseInt(Time.slice(-2)), 0) /
+      1000;
 
     setPrescription({
       medication: Medication,
