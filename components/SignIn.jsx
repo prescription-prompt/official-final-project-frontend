@@ -3,7 +3,7 @@ import { SignInStyles } from '../styles/Styles';
 import { useState } from 'react';
 import axios from 'axios';
 
-export default function SignIn({ setLoggedIn }) {
+export default function SignIn({ setLoggedIn, setPage }) {
   // Set default Email and Password for testing
   const [Email, setEmail] = useState('lacus@hotmail.edu');
   const [Password, setPassword] = useState('DEO28HDM4DF');
@@ -36,6 +36,13 @@ export default function SignIn({ setLoggedIn }) {
       <TouchableOpacity style={SignInStyles.signin_button} onPress={() => SignIn()}>
         <Text style={{ textAlign: 'center' }}>SIGN IN</Text>
       </TouchableOpacity>
+
+      <Text>
+        Dont have an account?
+        <TouchableOpacity onPress={() => setPage('SignUp')}>
+          <Text>SIGN UP</Text>
+        </TouchableOpacity>
+      </Text>
     </View>
   );
 }
