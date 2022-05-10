@@ -31,7 +31,7 @@ export default function App() {
         {!LoggedIn
           ? Page === 'SignUp' && <SignUp setLoggedIn={setLoggedIn} setPage={setPage} setUser={setUser} />
           : null}
-        {LoggedIn ? Page === 'Homepage' && <HomePage setPage={setPage} /> : null}
+        {LoggedIn ? Page === 'Homepage' && <HomePage setPage={setPage} user={User} /> : null}
         {LoggedIn ? Page === 'AddMedication' && <AddMedication User={User} /> : null}
       </SafeAreaView>
     </>
