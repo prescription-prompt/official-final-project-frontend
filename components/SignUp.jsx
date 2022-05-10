@@ -1,5 +1,5 @@
 import { ScrollView, Image, Text, TextInput, TouchableOpacity } from 'react-native';
-import { SignInStyles } from '../styles/Styles';
+import { GeneralStyles, SignInStyles } from '../styles/Styles';
 import { useState } from 'react';
 import axios from 'axios';
 
@@ -22,49 +22,55 @@ export default function SignIn({ setLoggedIn, setPage, setUser }) {
   };
 
   return (
-    <ScrollView style={{ width: '100%', height: '100%' }}>
-      <Image style={SignInStyles.image} source={require('../assets/medical.png')} />
+    <ScrollView style={[GeneralStyles.fullScreen, GeneralStyles.mt50]}>
+      <ScrollView style={[GeneralStyles.card, GeneralStyles.cardSmall, GeneralStyles.mb20]}>
+        <Image style={SignInStyles.image} source={require('../assets/PP_logo.png')} />
+      </ScrollView>
+      <ScrollView style={[GeneralStyles.card, GeneralStyles.mb20]}>
+        <TextInput
+          style={GeneralStyles.textInput}
+          placeholder='First Name'
+          autoCapitalize='none'
+          value={FirstName}
+          onChange={(e) => setFirstName(e.nativeEvent.text)}
+        ></TextInput>
 
-      <TextInput
-        style={[SignInStyles.input, { marginTop: 20 }]}
-        placeholder='First Name'
-        autoCapitalize='none'
-        value={FirstName}
-        onChange={(e) => setFirstName(e.nativeEvent.text)}
-      ></TextInput>
+        <TextInput
+          style={GeneralStyles.textInput}
+          placeholder='Last Name'
+          autoCapitalize='none'
+          value={LastName}
+          onChange={(e) => setLastName(e.nativeEvent.text)}
+        ></TextInput>
 
-      <TextInput
-        style={SignInStyles.input}
-        placeholder='Last Name'
-        autoCapitalize='none'
-        value={LastName}
-        onChange={(e) => setLastName(e.nativeEvent.text)}
-      ></TextInput>
+        <TextInput
+          style={GeneralStyles.textInput}
+          placeholder='Email Address'
+          autoCapitalize='none'
+          value={Email}
+          onChange={(e) => setEmail(e.nativeEvent.text)}
+        ></TextInput>
 
-      <TextInput
-        style={SignInStyles.input}
-        placeholder='Email Address'
-        autoCapitalize='none'
-        value={Email}
-        onChange={(e) => setEmail(e.nativeEvent.text)}
-      ></TextInput>
+        <TextInput
+          style={GeneralStyles.textInput}
+          placeholder='Password'
+          autoCapitalize='none'
+          value={Password}
+          onChange={(e) => setPassword(e.nativeEvent.text)}
+        ></TextInput>
 
-      <TextInput
-        style={SignInStyles.input}
-        placeholder='Password'
-        autoCapitalize='none'
-        value={Password}
-        onChange={(e) => setPassword(e.nativeEvent.text)}
-      ></TextInput>
-
-      <TouchableOpacity style={SignInStyles.signin_button} onPress={() => signIn()}>
-        <Text style={{ textAlign: 'center' }}>CREATE AN ACCOUNT</Text>
-      </TouchableOpacity>
-
-      <Text style={SignInStyles.change_page}>Already have an account?</Text>
-      <TouchableOpacity onPress={() => setPage('SignIn')} style={SignInStyles.change_page_btn}>
-        <Text style={SignInStyles.change_page_btn_text}>SIGN IN</Text>
-      </TouchableOpacity>
+        <TouchableOpacity style={GeneralStyles.outlineBtn} onPress={() => signIn()}>
+          <Text style={GeneralStyles.outlineBtnText}>CREATE AN ACCOUNT</Text>
+        </TouchableOpacity>
+      </ScrollView>
+      <Text style={[GeneralStyles.blue, GeneralStyles.bold, GeneralStyles.textCenter, GeneralStyles.mb5]}>
+        Already have an account?
+      </Text>
+      <ScrollView style={[GeneralStyles.half, GeneralStyles.center]}>
+        <TouchableOpacity onPress={() => setPage('SignIn')} style={GeneralStyles.btn}>
+          <Text style={GeneralStyles.btnText}>SIGN IN</Text>
+        </TouchableOpacity>
+      </ScrollView>
     </ScrollView>
   );
 }

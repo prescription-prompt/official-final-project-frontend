@@ -1,6 +1,50 @@
 import { StyleSheet, Platform, StatusBar } from 'react-native';
 
 export const GeneralStyles = StyleSheet.create({
+  body: {
+    backgroundColor: '#CDDDEF',
+  },
+  fullScreen: {
+    height: '100%',
+    width: '100%',
+  },
+  half: {
+    width: '50%',
+  },
+  center: {
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
+  blue: {
+    color: '#005EB8',
+  },
+  bold: {
+    fontWeight: 'bold',
+  },
+  textCenter: {
+    textAlign: 'center',
+  },
+  mb5: {
+    marginBottom: 5,
+  },
+  mb10: {
+    marginBottom: 10,
+  },
+  mb20: {
+    marginBottom: 20,
+  },
+  mt5: {
+    marginTop: 5,
+  },
+  mt10: {
+    marginTop: 10,
+  },
+  mt20: {
+    marginTop: 20,
+  },
+  mt50: {
+    marginTop: 50,
+  },
   heading: {
     fontSize: 24,
     fontWeight: 'bold',
@@ -10,11 +54,53 @@ export const GeneralStyles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
   },
+  card: {
+    backgroundColor: '#005EB8',
+    marginLeft: 10,
+    marginRight: 10,
+    borderRadius: 10,
+    padding: 20,
+  },
+  cardSmall: {
+    marginLeft: 60,
+    marginRight: 60,
+  },
+  textInput: {
+    alignSelf: 'center',
+    width: '100%',
+    marginBottom: 20,
+    padding: 15,
+    borderRadius: 10,
+    backgroundColor: '#ffffff',
+    color: '#000000',
+  },
+  btn: {
+    backgroundColor: '#005EB8',
+    borderRadius: 10,
+    padding: 5,
+    width: 'auto',
+  },
+  btnText: {
+    color: '#ffffff',
+    textAlign: 'center',
+  },
+  outlineBtn: {
+    alignSelf: 'center',
+    borderWidth: 1,
+    padding: 15,
+    borderRadius: 10,
+    width: '100%',
+    borderColor: '#ffffff',
+    color: '#ffffff',
+  },
+  outlineBtnText: {
+    color: '#ffffff',
+    textAlign: 'center',
+  },
 });
 
 export const HeaderStyles = StyleSheet.create({
   container: {
-    display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
@@ -100,45 +186,12 @@ export const MedCalendarStyles = StyleSheet.create({
     marginRight: 'auto',
   },
 });
+
 export const SignInStyles = StyleSheet.create({
   image: {
     alignSelf: 'center',
-    width: 160,
-    height: 160,
-  },
-  input: {
-    alignSelf: 'center',
-    width: '90%',
-    marginBottom: 20,
-    padding: 15,
-    borderWidth: 1,
-    borderRadius: 10,
-  },
-  signin_button: {
-    alignSelf: 'center',
-    borderWidth: 1,
-    padding: 15,
-    borderRadius: 10,
-    width: '90%',
-    borderColor: '#19ba00',
-  },
-  change_page: {
-    alignSelf: 'center',
-    marginTop: 10,
-  },
-  change_page_btn: {
-    alignSelf: 'center',
-    marginTop: 5,
-    marginBottom: 20,
-    width: '40%',
-    borderWidth: 1,
-    borderRadius: 4,
-    borderColor: '#005EB8',
-  },
-  change_page_btn_text: {
-    alignSelf: 'center',
-    fontSize: 14,
-    color: '#005EB8',
+    width: 220,
+    height: 120,
   },
 });
 
