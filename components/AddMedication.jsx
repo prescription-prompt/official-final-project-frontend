@@ -100,6 +100,7 @@ export default function AddMedication({ User }) {
       firstDose: firstDose,
       note: Note,
     });
+
     Notifications.scheduleNotificationAsync({
       content: {
         title: 'Medication Alert',
@@ -107,7 +108,7 @@ export default function AddMedication({ User }) {
         data: { data: Note },
       },
       trigger: {
-        seconds: 2,
+        seconds: Prescription.frequency * Prescription.amount,
         repeats: false,
       },
     });
