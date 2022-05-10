@@ -8,7 +8,7 @@ import SignUp from './components/SignUp';
 import AddMedication from './components/AddMedication';
 
 export default function App() {
-  const [LoggedIn, setLoggedIn] = useState(false);
+  const [LoggedIn, setLoggedIn] = useState(true);
   const [Title, setTitle] = useState(`Sign In to your Account`);
   const [Page, setPage] = useState('SignIn');
   const [User, setUser] = useState({});

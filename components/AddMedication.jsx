@@ -108,7 +108,7 @@ export default function AddMedication({ User }) {
         data: { data: Note },
       },
       trigger: {
-        seconds: Prescription.frequency * Prescription.amount,
+        seconds: Number(Prescription.frequency * Prescription.amount),
         repeats: false,
       },
     });
