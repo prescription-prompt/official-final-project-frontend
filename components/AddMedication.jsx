@@ -80,7 +80,7 @@ export default function AddMedication({ User }) {
     };
   }, []);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     let increment = undefined;
     if (Period === 'hour') increment = 3600;
     if (Period === 'day') increment = 86400;
@@ -100,15 +100,15 @@ export default function AddMedication({ User }) {
       firstDose: firstDose,
       note: Note,
     });
-
-    Notifications.scheduleNotificationAsync({
+    console.log(Frequency * increment);
+    await Notifications.scheduleNotificationAsync({
       content: {
         title: 'Medication Alert',
         body: `It's time to take your ${Medication}!`,
         data: { data: Note },
       },
       trigger: {
-        seconds: Number(Prescription.frequency * Prescription.amount),
+        seconds: Frequency * increment,
         repeats: false,
       },
     });
