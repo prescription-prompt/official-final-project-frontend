@@ -19,9 +19,9 @@ export default function AddMedication() {
 
   const handleSubmit = () => {
     let increment = undefined;
-    if (Period === 'hour') increment = 3600000;
-    if (Period === 'day') increment = 86400000;
-    if (Period === 'week') increment = 604800000;
+    if (Period === 'hour') increment = 3600;
+    if (Period === 'day') increment = 86400;
+    if (Period === 'week') increment = 604800;
     const firstDose =
       Date.UTC(new Date().getFullYear(), Month, FormDate, parseInt(Time.substring(0, 2)), parseInt(Time.slice(-2)), 0) /
       1000;
