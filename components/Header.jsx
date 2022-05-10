@@ -18,8 +18,8 @@ export default function Header({ title, loggedIn, setLoggedIn, Page, setPage }) 
 
   return (
     <>
-      <View style={{ display: Page === 'SignIn' || Page === 'SignUp' ? 'none' : 'flex' }}>
-        <Text style={{ display: Page === 'SignIn' || Page === 'SignUp' ? 'none' : 'flex' }}>{title}</Text>
+      <View>
+        <Text>{title}</Text>
         <TouchableOpacity onPress={() => setMenuIsOpen(!menuIsOpen)}>
           {!loggedIn ? null : <Text style={HeaderStyles.menu_toggle}>M</Text>}
         </TouchableOpacity>

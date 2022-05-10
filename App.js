@@ -9,9 +9,9 @@ import AddMedication from './components/AddMedication';
 import { GeneralStyles } from './styles/Styles';
 
 export default function App() {
-  const [LoggedIn, setLoggedIn] = useState(false);
+  const [LoggedIn, setLoggedIn] = useState(true);
   const [Title, setTitle] = useState(`Sign In to your Account`);
-  const [Page, setPage] = useState('SignIn');
+  const [Page, setPage] = useState('Homepage');
   const [User, setUser] = useState({});
 
   useEffect(() => {
