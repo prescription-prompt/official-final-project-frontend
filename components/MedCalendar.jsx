@@ -1,26 +1,41 @@
 import { Text, View, ScrollView } from 'react-native';
+import { useState, useEffect } from 'react';
 import { MedCalendarStyles } from '../styles/Styles';
+import axios from 'axios';
 
-export default function MedCalendar() {
-  const Medication = [
-    {
-      name: 'Drug One',
-      time: 1651828045,
-      amount: 1,
-      frequency: 840000,
-    },
-    {
-      name: 'Drug Two',
-      time: 1651828045,
-      amount: 1,
-      frequency: 840000,
-    },
-  ];
+export default function MedCalendar({ user }) {
+  const [Medication, setMedication] = useState([]);
+
+  // const Medication = [
+  //   {
+  //     name: 'Drug One',
+  //     time: 1651828045,
+  //     amount: 1,
+  //     frequency: 840000,
+  //   },
+  //   {
+  //     name: 'Drug Two',
+  //     time: 1651828045,
+  //     amount: 1,
+  //     frequency: 840000,
+  //   },
+  // ];
+
+  useEffect(() => {
+    const makeAsyncCall = async () => {
+      const { data } = await axios.get(`http://192.168.0.8:9090/api/prescriptions/user/${user._id}`);
+      setMedication(data.prescriptions);
+    };
+    makeAsyncCall();
+  }, []);
+
+  console.log('MEEE', Medication);
+
   const Reminders = [];
   for (let i = 0; i < Medication.length; i++) {
     for (let x = 0; x < Medication[i].amount; x++) {
       Reminders.push(
-        <View key={getDate(Medication[i].time, Medication[i].frequency, x, false) + i}>
+        <View key={Math.random()}>
           <View style={[MedCalendarStyles.container, MedCalendarStyles.flex]}>
             <View style={MedCalendarStyles.leftCol}>
               <Text>{getDay(getDate(Medication[i].time, Medication[i].frequency, x, false))}</Text>
