@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
 import { GeneralStyles, AddMedicationStyles } from '../styles/Styles';
 import RNPickerSelect from 'react-native-picker-select';
+import { postPrescription } from '../utils/api';
 
-export default function AddMedication() {
+export default function AddMedication({ User }) {
   const [Medication, setMedication] = useState('');
   const [Dosage, setDosage] = useState('');
   const [Unit, setUnit] = useState('');
@@ -55,6 +56,7 @@ export default function AddMedication() {
   };
 
   const SendAlert = (e) => Alert.alert('ERROR', e, [{ text: 'OK', style: 'default' }]);
+  const SuccessAlert = (e) => Alert.alert('SUCCESS', e, [{ text: 'OK', style: 'default' }]);
 
   useEffect(() => {
     if (Prescription?.medication?.length < 1) {
@@ -80,9 +82,24 @@ export default function AddMedication() {
       SendAlert('Please enter a Period.');
     } else {
       if (Object.keys(Prescription).length > 0) {
-        // TODO: Send prescription to database
+        postPrescription({
+          name: Prescription.medication,
+          dosage: Prescription.dosage + ' ' + Prescription.unit,
+          frequency: Prescription.frequency,
+          firstPromptTime: Prescription.firstDose,
+          notes: Prescription.note,
+          userId: User._id,
+          amount: Prescription.amount,
+        })
+          .then((prescription) => {
+            SuccessAlert('This prescription has been added.');
+            clearMedication();
+          })
+          .catch((err) => {
+            SendAlert('Something went wrong and we were unable to save your prescription, please try again.');
+            console.log(err);
+          });
         console.log(Prescription);
-        clearMedication();
       }
     }
   }, [Prescription]);

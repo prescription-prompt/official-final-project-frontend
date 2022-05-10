@@ -32,7 +32,7 @@ export default function App() {
           ? Page === 'SignUp' && <SignUp setLoggedIn={setLoggedIn} setPage={setPage} setUser={setUser} />
           : null}
         {LoggedIn ? Page === 'Homepage' && <HomePage setPage={setPage} /> : null}
-        {LoggedIn ? Page === 'AddMedication' && <AddMedication /> : null}
+        {LoggedIn ? Page === 'AddMedication' && <AddMedication User={User} /> : null}
       </SafeAreaView>
     </>
   );
