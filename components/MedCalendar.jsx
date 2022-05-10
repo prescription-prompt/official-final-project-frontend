@@ -5,14 +5,14 @@ export default function MedCalendar() {
   const Medication = [
     {
       name: 'Drug One',
-      time: 1651828045572,
-      amount: 40,
+      time: 1651828045,
+      amount: 1,
       frequency: 840000,
     },
     {
       name: 'Drug Two',
-      time: 1651828045572,
-      amount: 4,
+      time: 1651828045,
+      amount: 1,
       frequency: 840000,
     },
   ];
@@ -37,9 +37,10 @@ export default function MedCalendar() {
   Reminders.sort((a, b) => a.key - b.key);
   function getDate(date, frequency, days, humanDate) {
     const addedDays = frequency * days;
-    const result = date + addedDays;
+
+    const result = date + addedDays * 1000;
     if (humanDate == true) {
-      const humanTime = new Date(result);
+      const humanTime = new Date(result * 1000);
       let humanMins = humanTime.getMinutes();
       if (humanMins < 10) {
         humanMins = '' + 0 + humanMins;
