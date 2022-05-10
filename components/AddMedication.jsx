@@ -1,8 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { View, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
 import { GeneralStyles, AddMedicationStyles } from '../styles/Styles';
 import RNPickerSelect from 'react-native-picker-select';
 import { postPrescription } from '../utils/api';
+import * as Notifications from 'expo-notifications';
+import * as Device from 'expo-device';
+import storage from '@react-native-async-storage/async-storage';
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: true,
+    shouldSetBadge: true,
+  }),
+});
+
+console.log(Date.now() / 1000 - 1652179892);
 
 export default function AddMedication({ User }) {
   const [Medication, setMedication] = useState('');
@@ -17,6 +30,55 @@ export default function AddMedication({ User }) {
   const [Time, setTime] = useState('');
   const [Note, setNote] = useState('');
   const [Prescription, setPrescription] = useState({});
+  const [notification, setNotification] = useState(false);
+  const notificationListener = useRef();
+  const responseListener = useRef();
+
+  useEffect(() => {
+    const getPermission = async () => {
+      if (Device.isDevice) {
+        const { status: existingStatus } = await Notifications.getPermissionsAsync();
+        let finalStatus = existingStatus;
+        if (existingStatus !== 'granted') {
+          const { status } = await Notifications.requestPermissionsAsync();
+          finalStatus = status;
+        }
+        if (finalStatus !== 'granted') {
+          alert('Please Enable Push Notifications to use the App!');
+          await storage.setItem('expopushtoken', '');
+          return;
+        }
+        const token = (await Notifications.getExpoPushTokenAsync()).data;
+        await storage.setItem('expopushtoken', token);
+      } else {
+        alert('Must Use Physical Device for Push Notifications!');
+      }
+
+      if (Platform.OS === 'android') {
+        Notifications.setNotificationChannelAsync('default', {
+          name: 'default',
+          importance: Notifications.AndroidImportance.MAX,
+          vibrationPattern: [0, 250, 250, 250],
+          lightColor: '#FF231F7C',
+        });
+      }
+    };
+
+    getPermission();
+
+    notificationListener.current = Notifications.addNotificationReceivedListener((notification) => {
+      setNotification(notification);
+    });
+
+    responseListener.current = Notifications.addNotificationResponseReceivedListener((response) => {
+      console.log(response);
+    });
+
+    return () => {
+      Notifications.removeNotificationSubscription(notificationListener.current);
+      Notifications.removeNotificationSubscription(responseListener.current);
+    };
+  }, []);
 
   const handleSubmit = () => {
     let increment = undefined;
@@ -38,6 +100,18 @@ export default function AddMedication({ User }) {
       firstDose: firstDose,
       note: Note,
     });
+    Notifications.scheduleNotificationAsync({
+      content: {
+        title: 'Medication Alert',
+        body: `It's time to take your ${Medication}!`,
+        data: { data: Note },
+      },
+      trigger: {
+        seconds: frequency,
+        repeats: false,
+      },
+    });
+    // Notifications.cancelScheduledNotificationAsync(medicationNotify);
   };
 
   const clearMedication = () => {
