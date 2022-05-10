@@ -107,11 +107,10 @@ export default function AddMedication({ User }) {
         data: { data: Note },
       },
       trigger: {
-        seconds: Frequency,
+        seconds: 2,
         repeats: false,
       },
     });
-    Notifications.cancelAllScheduledNotificationsAsync();
   };
 
   const clearMedication = () => {
