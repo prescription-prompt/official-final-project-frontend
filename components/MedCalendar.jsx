@@ -1,18 +1,18 @@
 import { Text, View, ScrollView } from 'react-native';
-import { MedCalendarStyles } from '../styles/Styles';
+import { GeneralStyles, MedCalendarStyles } from '../styles/Styles';
 
 export default function MedCalendar() {
   const Medication = [
     {
       name: 'Drug One',
       time: 1651828045,
-      amount: 1,
+      amount: 5,
       frequency: 840000,
     },
     {
       name: 'Drug Two',
       time: 1651828045,
-      amount: 1,
+      amount: 5,
       frequency: 840000,
     },
   ];
@@ -21,13 +21,37 @@ export default function MedCalendar() {
     for (let x = 0; x < Medication[i].amount; x++) {
       Reminders.push(
         <View key={getDate(Medication[i].time, Medication[i].frequency, x, false) + i}>
-          <View style={[MedCalendarStyles.container, MedCalendarStyles.flex]}>
-            <View style={MedCalendarStyles.leftCol}>
-              <Text>{getDay(getDate(Medication[i].time, Medication[i].frequency, x, false))}</Text>
+          <View
+            style={[
+              GeneralStyles.card,
+              GeneralStyles.cardWhite,
+              GeneralStyles.flex,
+              GeneralStyles.flexRow,
+              GeneralStyles.p10,
+            ]}
+          >
+            <View
+              style={[
+                MedCalendarStyles.leftCol,
+                GeneralStyles.flex,
+                GeneralStyles.flexRow,
+                GeneralStyles.alignItemsCenter,
+              ]}
+            >
+              <Text style={[MedCalendarStyles.leftColTitle, GeneralStyles.blue, GeneralStyles.bold]}>
+                {getDay(getDate(Medication[i].time, Medication[i].frequency, x, false))}
+              </Text>
             </View>
             <View style={MedCalendarStyles.rightCol}>
-              <Text>{Medication[i].name} at </Text>
-              <Text>{getDate(Medication[i].time, Medication[i].frequency, x, true)}</Text>
+              <View style={[GeneralStyles.flex, GeneralStyles.flexRow, GeneralStyles.alignItemsBase]}>
+                <Text style={[GeneralStyles.blue, GeneralStyles.fontMed, GeneralStyles.bold]}>
+                  {Medication[i].name}
+                </Text>
+                <Text style={[GeneralStyles.blue, GeneralStyles.fontSmall, GeneralStyles.bold]}> at</Text>
+              </View>
+              <Text style={[GeneralStyles.blue, GeneralStyles.fontMed, GeneralStyles.bold]}>
+                {getDate(Medication[i].time, Medication[i].frequency, x, true)}
+              </Text>
             </View>
           </View>
         </View>
@@ -69,5 +93,10 @@ export default function MedCalendar() {
     }
     return dayOfWeek;
   }
-  return <ScrollView style={[MedCalendarStyles.container, MedCalendarStyles.outerContainer]}>{Reminders}</ScrollView>;
+  return (
+    <View style={[GeneralStyles.card, MedCalendarStyles.height, MedCalendarStyles.gradient]}>
+      <Text style={[GeneralStyles.cardSubTitle, GeneralStyles.white]}>Prescription Calendar</Text>
+      <ScrollView>{Reminders}</ScrollView>
+    </View>
+  );
 }
