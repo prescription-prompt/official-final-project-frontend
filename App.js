@@ -7,6 +7,7 @@ import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import AddMedication from './components/AddMedication';
 import MedicationList from './components/MedicationList';
+import { GeneralStyles } from './styles/Styles';
 
 export default function App() {
   const [LoggedIn, setLoggedIn] = useState(false);
@@ -15,8 +16,8 @@ export default function App() {
   const [User, setUser] = useState({});
 
   useEffect(() => {
-    if (!LoggedIn && Page === 'SignIn') setTitle('Sign In to your Account');
-    if (!LoggedIn && Page === 'SignUp') setTitle('Create an Account');
+    if (!LoggedIn && Page === 'SignIn') setTitle('');
+    if (!LoggedIn && Page === 'SignUp') setTitle('');
     if (LoggedIn && Page === 'Homepage') setTitle(`Hi, ${User.firstName} ${User.lastName}`);
     if (LoggedIn && Page === 'AddMedication') setTitle('Add Medication');
     if (LoggedIn && Page === 'MedicationList') setTitle('Medication List');
@@ -25,7 +26,7 @@ export default function App() {
   return (
     <>
       <StatusBar style='auto' />
-      <SafeAreaView>
+      <SafeAreaView style={GeneralStyles.fullScreen}>
         <Header title={Title} loggedIn={LoggedIn} setLoggedIn={setLoggedIn} page={Page} setPage={setPage} />
         {!LoggedIn
           ? Page === 'SignIn' && <SignIn setLoggedIn={setLoggedIn} setPage={setPage} setUser={setUser} />

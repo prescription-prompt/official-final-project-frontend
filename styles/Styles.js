@@ -1,97 +1,201 @@
 import { StyleSheet, Platform, StatusBar } from 'react-native';
 
 export const GeneralStyles = StyleSheet.create({
+  body: {
+    backgroundColor: '#CDDDEF',
+  },
+  fullScreen: {
+    height: '100%',
+    width: '100%',
+    padding: 20,
+  },
+  half: {
+    width: '50%',
+  },
+  center: {
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
+  blue: {
+    color: '#005EB8',
+  },
+  white: {
+    color: '#ffffff',
+  },
+  bold: {
+    fontWeight: 'bold',
+  },
+  textCenter: {
+    textAlign: 'center',
+  },
+  mb5: {
+    marginBottom: 5,
+  },
+  mb10: {
+    marginBottom: 10,
+  },
+  mb20: {
+    marginBottom: 20,
+  },
+  mt5: {
+    marginTop: 5,
+  },
+  mt10: {
+    marginTop: 10,
+  },
+  mt20: {
+    marginTop: 20,
+  },
+  mt50: {
+    marginTop: 50,
+  },
+  p10: {
+    padding: 10,
+  },
   heading: {
     fontSize: 24,
     fontWeight: 'bold',
   },
+  fontLarge: {
+    fontSize: 28,
+  },
+  fontMed: {
+    fontSize: 20,
+  },
+  fontSmall: {
+    fontSize: 12,
+  },
   flex: {
     display: 'flex',
+  },
+  flexCol: {
+    flexDirection: 'column',
+  },
+  flexRow: {
     flexDirection: 'row',
-    justifyContent: 'center',
+  },
+  alignItemsBase: {
+    alignItems: 'baseline',
+  },
+  alignItemsCenter: {
+    alignItems: 'center',
+  },
+  card: {
+    backgroundColor: '#005EB8',
+    borderRadius: 10,
+    padding: 20,
+    marginBottom: 10,
+  },
+  cardWhite: {
+    backgroundColor: '#ffffff',
+  },
+  cardSmall: {
+    marginLeft: 60,
+    marginRight: 60,
+  },
+  cardHalf: {
+    width: '48%',
+  },
+  cardHalfLeft: {
+    marginRight: '2%',
+  },
+  cardHalfRight: {
+    marginLeft: '2%',
+  },
+  cardSubTitle: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    paddingBottom: 20,
+  },
+  cardBorder: {
+    borderColor: '#005EB8',
+    borderWidth: 4,
+  },
+  textInput: {
+    alignSelf: 'center',
+    width: '100%',
+    marginBottom: 20,
+    padding: 15,
+    borderRadius: 10,
+    backgroundColor: '#ffffff',
+    color: '#000000',
+  },
+  btn: {
+    backgroundColor: '#005EB8',
+    borderRadius: 10,
+    padding: 5,
+    width: 'auto',
+  },
+  btnText: {
+    color: '#ffffff',
+    textAlign: 'center',
+  },
+  outlineBtn: {
+    alignSelf: 'center',
+    borderWidth: 1,
+    padding: 15,
+    borderRadius: 10,
+    width: '100%',
+    borderColor: '#ffffff',
+    color: '#ffffff',
+  },
+  outlineBtnText: {
+    color: '#ffffff',
+    textAlign: 'center',
   },
 });
 
 export const HeaderStyles = StyleSheet.create({
   container: {
     display: 'flex',
+    marginTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
+    paddingTop: 20,
+    paddingBottom: 20,
+  },
+  titleBar: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
-    padding: 10,
-    borderBottomWidth: 2,
   },
-  menu_toggle: {
-    paddingVertical: 2,
-    paddingHorizontal: 6,
-    fontSize: 24,
+  leftContainer: {
+    width: '60%',
+  },
+  rightContainer: {
+    width: 'auto',
+  },
+  title: {
+    color: '#005EB8',
     fontWeight: 'bold',
-    borderWidth: 2,
+    marginBottom: 0,
+    fontSize: 24,
   },
   menu: {
-    width: '85%',
-    height: '100%',
-    borderRightWidth: 2,
+    backgroundColor: '#005EB8',
+    width: '100%',
     borderRadius: 10,
+    marginTop: 20,
+    padding: 20,
   },
   menu_button: {
-    marginLeft: 20,
     marginBottom: 20,
-    padding: 10,
-    width: '50%',
-    borderWidth: 2,
-    borderRadius: 10,
-  },
-});
-
-export const NextPromptStyles = StyleSheet.create({
-  container: {
-    alignSelf: 'center',
-    alignItems: 'center',
-    width: '90%',
-    marginTop: 20,
     paddingBottom: 10,
-    borderWidth: 2,
-    borderRadius: 10,
-  },
-  remember: {
-    marginTop: 10,
-  },
-  medication: {
-    fontSize: 28,
-  },
-  flex: {
-    display: 'flex',
-    flexDirection: 'row',
-  },
-  timer: {
-    fontSize: 28,
+    width: '100%',
+    borderColor: '#ffffff',
+    borderBottomWidth: 2,
+    color: '#ffffff',
+    fontWeight: 'bold',
   },
 });
 
 export const MedCalendarStyles = StyleSheet.create({
-  container: {
-    alignSelf: 'center',
-    width: '90%',
-    marginTop: 20,
-    padding: 10,
-    borderWidth: 2,
-    borderRadius: 10,
-  },
-  outerContainer: {
-    height: '60%',
-  },
-  flex: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
   leftCol: {
     textAlign: 'center',
-    borderRightColor: '#000000',
+    borderRightColor: '#005eb8',
     borderRightWidth: 2,
     padding: 5,
-    width: '33%',
+    width: '45%',
+  },
+  leftColTitle: {
+    fontSize: 22,
   },
   rightCol: {
     padding: 5,
@@ -99,121 +203,95 @@ export const MedCalendarStyles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
   },
+  height: {
+    height: '50%',
+  },
 });
+
 export const SignInStyles = StyleSheet.create({
   image: {
     alignSelf: 'center',
-    width: 160,
-    height: 160,
-  },
-  input: {
-    alignSelf: 'center',
-    width: '90%',
-    marginBottom: 20,
-    padding: 15,
-    borderWidth: 1,
-    borderRadius: 10,
-  },
-  signin_button: {
-    alignSelf: 'center',
-    borderWidth: 1,
-    padding: 15,
-    borderRadius: 10,
-    width: '90%',
-    borderColor: '#19ba00',
-  },
-  change_page: {
-    alignSelf: 'center',
-    marginTop: 10,
-  },
-  change_page_btn: {
-    alignSelf: 'center',
-    marginTop: 5,
-    marginBottom: 20,
-    width: '40%',
-    borderWidth: 1,
-    borderRadius: 4,
-    borderColor: '#005EB8',
-  },
-  change_page_btn_text: {
-    alignSelf: 'center',
-    fontSize: 14,
-    color: '#005EB8',
+    width: 220,
+    height: 120,
   },
 });
 
 export const AddMedicationStyles = StyleSheet.create({
   input: {
     alignSelf: 'center',
-    width: '90%',
-    marginBottom: 20,
-    padding: 15,
-    borderWidth: 1,
-    borderRadius: 10,
+    width: '100%',
+    marginBottom: 10,
+    padding: 13,
+    backgroundColor: '#ffffff',
+    borderRadius: 15,
+  },
+  inputLabel: {
+    color: '#ffffff',
+    fontWeight: 'bold',
+    fontSize: 12,
+    paddingLeft: 15,
+    paddingBottom: 5,
   },
   split: {
     alignSelf: 'center',
-    marginBottom: 20,
-    padding: 15,
-    borderWidth: 1,
     borderRadius: 10,
   },
-  split_left: {
-    width: '52%',
-    borderTopRightRadius: 0,
-    borderBottomRightRadius: 0,
+  splitLeft: {
+    width: '60%',
   },
-  split_right: {
-    width: '38%',
-    borderLeftWidth: 0,
+  splitLeftInput: {
+    backgroundColor: '#ffffff',
+    borderBottomRightRadius: 0,
+    borderTopRightRadius: 0,
+  },
+  splitRight: {
+    width: '40%',
+  },
+  splitRightInput: {
+    borderLeftWidth: 5,
+    borderColor: '#005eb8',
+    backgroundColor: '#ffffff',
     borderTopLeftRadius: 0,
     borderBottomLeftRadius: 0,
+    borderRadius: 10,
   },
-  split_left_triple: {
-    width: '30%',
-    borderRightWidth: 0,
+  dropdown: {
+    color: '#ffffff',
+    backgroundColor: 'red',
+  },
+  splitThird: {
+    width: '33%',
+    marginBottom: 10,
+  },
+  splitThirdInput: {
+    borderColor: '#005eb8',
+    backgroundColor: '#ffffff',
+    borderRadius: 10,
+  },
+  splitThirdLeft: {
     borderTopRightRadius: 0,
     borderBottomRightRadius: 0,
   },
-  split_middle_triple: {
-    width: '30%',
+  splitThirdMid: {
     borderRadius: 0,
+    borderLeftWidth: 5,
+    borderRightWidth: 5,
   },
-  split_right_triple: {
-    width: '30%',
-    borderLeftWidth: 0,
+  splitThirdRight: {
     borderTopLeftRadius: 0,
     borderBottomLeftRadius: 0,
   },
-  button_text: {
-    fontWeight: 'bold',
-    alignSelf: 'center',
-  },
-  submit_button: {
-    borderWidth: 1,
+  submitButton: {
     padding: 15,
     borderRadius: 10,
-    width: '51%',
+    width: '60%',
     marginRight: '2%',
-    borderColor: '#19ba00',
+    backgroundColor: '#4CC37E',
   },
-  clear_button: {
-    borderWidth: 1,
+  clearButton: {
     padding: 15,
     borderRadius: 10,
-    width: '37%',
-    borderColor: '#fd5452',
-  },
-  add_med_button: {
-    alignSelf: 'center',
-    alignItems: 'center',
-    width: '90%',
-    height: '10%',
-    marginTop: 20,
-    borderWidth: 2,
-    borderRadius: 10,
-  },
-  add_med_button_text: {
-    fontSize: 28,
+    width: '38%',
+    backgroundColor: '#C34C4C',
   },
 });
