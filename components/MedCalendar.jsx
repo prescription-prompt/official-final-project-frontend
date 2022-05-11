@@ -8,7 +8,7 @@ export default function MedCalendar({ user }) {
 
   useEffect(() => {
     const makeAsyncCall = async () => {
-      const { data } = await axios.get(`http://192.168.1.70:9090/api/prescriptions/user/${user._id}`);
+      const { data } = await axios.get(`http://192.168.0.8:9090/api/prescriptions/user/${user._id}`);
       setMedication(data.prescriptions);
     };
     makeAsyncCall();

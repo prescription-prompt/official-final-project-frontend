@@ -6,6 +6,7 @@ import HomePage from './components/HomePage';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import AddMedication from './components/AddMedication';
+import MedicationList from './components/MedicationList';
 import { GeneralStyles } from './styles/Styles';
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
     if (!LoggedIn && Page === 'SignUp') setTitle('');
     if (LoggedIn && Page === 'Homepage') setTitle(`Hi, ${User.firstName} ${User.lastName}`);
     if (LoggedIn && Page === 'AddMedication') setTitle('Add Medication');
+    if (LoggedIn && Page === 'MedicationList') setTitle('Medication List');
   }, [Page, LoggedIn]);
 
   return (
@@ -34,6 +36,7 @@ export default function App() {
           : null}
         {LoggedIn ? Page === 'Homepage' && <HomePage setPage={setPage} user={User} /> : null}
         {LoggedIn ? Page === 'AddMedication' && <AddMedication User={User} /> : null}
+        {LoggedIn ? Page === 'MedicationList' && <MedicationList User={User} /> : null}
       </SafeAreaView>
     </>
   );
