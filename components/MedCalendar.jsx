@@ -1,6 +1,6 @@
 import { Text, View, ScrollView } from 'react-native';
 import { useState, useEffect } from 'react';
-import { MedCalendarStyles } from '../styles/Styles';
+import { MedCalendarStyles, GeneralStyles } from '../styles/Styles';
 import axios from 'axios';
 
 export default function MedCalendar({ user }) {
@@ -8,7 +8,7 @@ export default function MedCalendar({ user }) {
 
   useEffect(() => {
     const makeAsyncCall = async () => {
-      const { data } = await axios.get(`http://192.168.0.8:9090/api/prescriptions/user/${user._id}`);
+      const { data } = await axios.get(`http://192.168.1.70:9090/api/prescriptions/user/${user._id}`);
       setMedication(data.prescriptions);
     };
     makeAsyncCall();
@@ -19,13 +19,37 @@ export default function MedCalendar({ user }) {
     for (let x = 0; x < Medication[i].amount; x++) {
       Reminders.push(
         <View key={getDate(Medication[i].firstPromptTime, Medication[i].frequency, x, false) + i}>
-          <View style={[MedCalendarStyles.container, MedCalendarStyles.flex]}>
-            <View style={MedCalendarStyles.leftCol}>
-              <Text>{getDay(getDate(Medication[i].firstPromptTime, Medication[i].frequency, x, false))}</Text>
+          <View
+            style={[
+              GeneralStyles.card,
+              GeneralStyles.cardWhite,
+              GeneralStyles.flex,
+              GeneralStyles.flexRow,
+              GeneralStyles.p10,
+            ]}
+          >
+            <View
+              style={[
+                MedCalendarStyles.leftCol,
+                GeneralStyles.flex,
+                GeneralStyles.flexRow,
+                GeneralStyles.alignItemsCenter,
+              ]}
+            >
+              <Text style={[MedCalendarStyles.leftColTitle, GeneralStyles.blue, GeneralStyles.bold]}>
+                {getDay(getDate(Medication[i].firstPromptTime, Medication[i].frequency, x, false))}
+              </Text>
             </View>
             <View style={MedCalendarStyles.rightCol}>
-              <Text>{Medication[i].name} at </Text>
-              <Text>{getDate(Medication[i].firstPromptTime, Medication[i].frequency, x, true)}</Text>
+              <View style={[GeneralStyles.flex, GeneralStyles.flexRow, GeneralStyles.alignItemsBase]}>
+                <Text style={[GeneralStyles.blue, GeneralStyles.fontMed, GeneralStyles.bold]}>
+                  {Medication[i].name}
+                </Text>
+                <Text style={[GeneralStyles.blue, GeneralStyles.fontSmall, GeneralStyles.bold]}> at</Text>
+              </View>
+              <Text style={[GeneralStyles.blue, GeneralStyles.fontMed, GeneralStyles.bold]}>
+                {getDate(Medication[i].firstPromptTime, Medication[i].frequency, x, true)}
+              </Text>
             </View>
           </View>
         </View>
@@ -67,5 +91,10 @@ export default function MedCalendar({ user }) {
     }
     return dayOfWeek;
   }
-  return <ScrollView style={[MedCalendarStyles.container, MedCalendarStyles.outerContainer]}>{Reminders}</ScrollView>;
+  return (
+    <View style={[GeneralStyles.card, MedCalendarStyles.height, MedCalendarStyles.gradient]}>
+      <Text style={[GeneralStyles.cardSubTitle, GeneralStyles.white]}>Prescription Calendar</Text>
+      <ScrollView>{Reminders}</ScrollView>
+    </View>
+  );
 }

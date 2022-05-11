@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Text, View } from 'react-native';
-import { NextPromptStyles } from '../styles/Styles';
+import { GeneralStyles, NextPromptStyles } from '../styles/Styles';
 
 export default function NextPrompt() {
   const [MedicationName, setMedicationName] = useState('MedicationName');
@@ -8,14 +8,13 @@ export default function NextPrompt() {
   const [Timer, setTimer] = useState('XX');
 
   return (
-    <View style={NextPromptStyles.container}>
-      <Text style={NextPromptStyles.remember}>
-        Remember to take {MedicationDosage} of
-      </Text>
-      <Text style={NextPromptStyles.medication}>{MedicationName}</Text>
-      <View style={NextPromptStyles.flex}>
-        <Text>in </Text>
-        <Text style={NextPromptStyles.timer}>{Timer} minutes</Text>
+    <View style={GeneralStyles.card}>
+      {/* <Text style={[GeneralStyles.cardSubTitle, GeneralStyles.white]}>Prescription Prompt</Text> */}
+      <Text style={[GeneralStyles.white, GeneralStyles.bold]}>Remember to take {MedicationDosage} of</Text>
+      <Text style={[GeneralStyles.fontLarge, GeneralStyles.white]}>{MedicationName}</Text>
+      <View style={[GeneralStyles.flex, GeneralStyles.flexRow]}>
+        <Text style={GeneralStyles.white}>in </Text>
+        <Text style={[GeneralStyles.fontLarge, GeneralStyles.white]}>{Timer} minutes</Text>
       </View>
     </View>
   );

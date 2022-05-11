@@ -17,25 +17,29 @@ export default function Header({ title, loggedIn, setLoggedIn, Page, setPage }) 
   };
 
   return (
-    <>
-      <View style={HeaderStyles.container}>
-        <Text style={GeneralStyles.heading}>{title}</Text>
-        <TouchableOpacity onPress={() => setMenuIsOpen(!menuIsOpen)}>
-          {!loggedIn ? null : <Text style={HeaderStyles.menu_toggle}>M</Text>}
-        </TouchableOpacity>
+    <View style={HeaderStyles.container}>
+      <View style={HeaderStyles.titleBar}>
+        <View styles={HeaderStyles.leftContainer}>
+          <Text style={HeaderStyles.title}>{title}</Text>
+        </View>
+        <View styles={HeaderStyles.rightContainer}>
+          <TouchableOpacity style={GeneralStyles.btn} onPress={() => setMenuIsOpen(!menuIsOpen)}>
+            {!loggedIn ? null : <Text style={GeneralStyles.btnText}>Menu</Text>}
+          </TouchableOpacity>
+        </View>
       </View>
 
       <View style={[HeaderStyles.menu, { display: menuIsOpen ? 'flex' : 'none' }]}>
         <TouchableOpacity style={[HeaderStyles.menu_button, { marginTop: 20 }]} onPress={() => changePage('Homepage')}>
-          <Text>Homepage</Text>
+          <Text style={[GeneralStyles.bold, GeneralStyles.white]}>Homepage</Text>
         </TouchableOpacity>
         <TouchableOpacity style={HeaderStyles.menu_button} onPress={() => changePage('AddMedication')}>
-          <Text>Add Medication</Text>
+          <Text style={[GeneralStyles.bold, GeneralStyles.white]}>Add Medication</Text>
         </TouchableOpacity>
         <TouchableOpacity style={HeaderStyles.menu_button} onPress={() => SignOut()}>
-          <Text style={{ color: '#ff0000' }}>Sign Out</Text>
+          <Text style={[GeneralStyles.bold, GeneralStyles.white]}>Sign Out</Text>
         </TouchableOpacity>
       </View>
-    </>
+    </View>
   );
 }
