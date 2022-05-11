@@ -107,7 +107,7 @@ export default function AddMedication({ User }) {
       },
       trigger: {
         seconds: Frequency * increment,
-        repeats: false,
+        repeats: true,
       },
     });
   };
