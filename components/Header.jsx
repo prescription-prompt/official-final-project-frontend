@@ -2,7 +2,7 @@ import { Text, View, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
 import { GeneralStyles, HeaderStyles } from '../styles/Styles';
 
-export default function Header({ title, loggedIn, setLoggedIn, setPage }) {
+export default function Header({ title, loggedIn, setLoggedIn, Page, setPage }) {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
 
   const changePage = (newPage) => {
@@ -11,15 +11,15 @@ export default function Header({ title, loggedIn, setLoggedIn, setPage }) {
   };
 
   const SignOut = () => {
-    setMenuIsOpen(false);
+    setPage('SignIn');
     setLoggedIn(false);
-    setPage('Homepage');
+    setMenuIsOpen(false);
   };
 
   return (
     <>
       <View style={HeaderStyles.container}>
-        <Text style={[GeneralStyles.heading, { marginLeft: loggedIn ? 0 : 55 }]}>{title}</Text>
+        <Text style={GeneralStyles.heading}>{title}</Text>
         <TouchableOpacity onPress={() => setMenuIsOpen(!menuIsOpen)}>
           {!loggedIn ? null : <Text style={HeaderStyles.menu_toggle}>M</Text>}
         </TouchableOpacity>

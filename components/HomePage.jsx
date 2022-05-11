@@ -4,11 +4,11 @@ import { TouchableOpacity, Text } from 'react-native';
 import { AddMedicationStyles } from '../styles/Styles';
 import { useState } from 'react';
 
-export default function HomePage({ setPage }) {
+export default function HomePage({ setPage, user }) {
   return (
     <>
       <NextPrompt />
-      <MedCalendar />
+      <MedCalendar user={user} />
       <TouchableOpacity style={[AddMedicationStyles.add_med_button]} onPress={() => setPage('AddMedication')}>
         <Text style={[AddMedicationStyles.add_med_button_text]}>Add A New Medication</Text>
       </TouchableOpacity>
