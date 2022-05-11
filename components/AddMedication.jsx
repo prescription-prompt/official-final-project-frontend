@@ -173,7 +173,6 @@ export default function AddMedication({ User }) {
             SendAlert('Something went wrong and we were unable to save your prescription, please try again.');
             console.log(err);
           });
-        console.log(Prescription);
       }
     }
   }, [Prescription]);
