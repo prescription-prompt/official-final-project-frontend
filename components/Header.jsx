@@ -32,6 +32,9 @@ export default function Header({ title, loggedIn, setLoggedIn, Page, setPage }) 
         <TouchableOpacity style={HeaderStyles.menu_button} onPress={() => changePage('AddMedication')}>
           <Text>Add Medication</Text>
         </TouchableOpacity>
+        <TouchableOpacity style={HeaderStyles.menu_button} onPress={() => changePage('MedicationList')}>
+          <Text>Medication List</Text>
+        </TouchableOpacity>
         <TouchableOpacity style={HeaderStyles.menu_button} onPress={() => SignOut()}>
           <Text style={{ color: '#ff0000' }}>Sign Out</Text>
         </TouchableOpacity>

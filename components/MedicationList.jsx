@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View, StyleSheet, ScrollView } from 'react-native';
+import { getPrescriptionList } from '../utils/api';
 
-const MedicationList = () => {
+const MedicationList = ({ User }) => {
   const [medicationList, setMedicationList] = useState([]);
 
-  //   useEffect(() => {
-  //       //fetchMedication api request.then(res => {
-  //setMedicationList(res.something)
-  //       })
-  //   });
+  useEffect(() => {
+    getPrescriptionList(User._id).then((res) => {
+      setMedicationList(res.prescriptions);
+    });
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -16,7 +17,14 @@ const MedicationList = () => {
         {medicationList.map((medicine) => {
           return (
             <View>
-              <Text>{medicine.name}</Text>
+              {Object.keys(medicine).map((key) => {
+                return <Text>{medicine[key]}</Text>;
+              })}
+              {/* <Text>{medicine.name}</Text>
+              <Text>{medicine.frequency}</Text>
+              <Text>{medicine.dosage}</Text>
+              <Text>{medicine.amount}</Text>
+              <Text>{medicine.notes}</Text> */}
             </View>
           );
         })}
