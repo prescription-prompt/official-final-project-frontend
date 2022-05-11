@@ -9,9 +9,9 @@ import AddMedication from './components/AddMedication';
 import { GeneralStyles } from './styles/Styles';
 
 export default function App() {
-  const [LoggedIn, setLoggedIn] = useState(true);
+  const [LoggedIn, setLoggedIn] = useState(false);
   const [Title, setTitle] = useState(`Sign In to your Account`);
-  const [Page, setPage] = useState('Homepage');
+  const [Page, setPage] = useState('SignIn');
   const [User, setUser] = useState({});
 
   useEffect(() => {
@@ -32,8 +32,8 @@ export default function App() {
         {!LoggedIn
           ? Page === 'SignUp' && <SignUp setLoggedIn={setLoggedIn} setPage={setPage} setUser={setUser} />
           : null}
-        {LoggedIn ? Page === 'Homepage' && <HomePage setPage={setPage} /> : null}
-        {LoggedIn ? Page === 'AddMedication' && <AddMedication /> : null}
+        {LoggedIn ? Page === 'Homepage' && <HomePage setPage={setPage} user={User} /> : null}
+        {LoggedIn ? Page === 'AddMedication' && <AddMedication User={User} /> : null}
       </SafeAreaView>
     </>
   );

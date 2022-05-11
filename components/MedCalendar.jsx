@@ -1,21 +1,19 @@
 import { Text, View, ScrollView } from 'react-native';
-import { GeneralStyles, MedCalendarStyles } from '../styles/Styles';
+import { useState, useEffect } from 'react';
+import { MedCalendarStyles, GeneralStyles } from '../styles/Styles';
+import axios from 'axios';
 
-export default function MedCalendar() {
-  const Medication = [
-    {
-      name: 'Drug One',
-      time: 1651828045,
-      amount: 5,
-      frequency: 840000,
-    },
-    {
-      name: 'Drug Two',
-      time: 1651828045,
-      amount: 5,
-      frequency: 840000,
-    },
-  ];
+export default function MedCalendar({ user }) {
+  const [Medication, setMedication] = useState([]);
+
+  useEffect(() => {
+    const makeAsyncCall = async () => {
+      const { data } = await axios.get(`http://192.168.0.8:9090/api/prescriptions/user/${user._id}`);
+      setMedication(data.prescriptions);
+    };
+    makeAsyncCall();
+  }, []);
+
   const Reminders = [];
   for (let i = 0; i < Medication.length; i++) {
     for (let x = 0; x < Medication[i].amount; x++) {
@@ -62,18 +60,18 @@ export default function MedCalendar() {
   function getDate(date, frequency, days, humanDate) {
     const addedDays = frequency * days;
 
-    const result = date + addedDays * 1000;
+    const result = date + addedDays;
     if (humanDate == true) {
       const humanTime = new Date(result * 1000);
       let humanMins = humanTime.getMinutes();
       if (humanMins < 10) {
         humanMins = '' + 0 + humanMins;
       }
-      const humanDate =
-        humanTime.getHours() + ':' + humanMins + ' on ' + humanTime.getDate() + '/' + (humanTime.getMonth() + 1);
+      let humanHours = humanTime.getHours() + humanTime.getTimezoneOffset() / 60;
+      const humanDate = humanHours + ':' + humanMins + ' on ' + humanTime.getDate() + '/' + (humanTime.getMonth() + 1);
       return humanDate;
     } else {
-      return result;
+      return result * 1000;
     }
   }
   function getDay(timestamp) {
