@@ -8,7 +8,7 @@ export default function MedCalendar({ user }) {
 
   useEffect(() => {
     const makeAsyncCall = async () => {
-      const { data } = await axios.get(`http://192.168.0.8:9090/api/prescriptions/user/${user._id}`);
+      const { data } = await axios.get(`http://192.168.1.70:9090/api/prescriptions/user/${user._id}`);
       setMedication(data.prescriptions);
     };
     makeAsyncCall();
@@ -18,7 +18,7 @@ export default function MedCalendar({ user }) {
   for (let i = 0; i < Medication.length; i++) {
     for (let x = 0; x < Medication[i].amount; x++) {
       Reminders.push(
-        <View key={getDate(Medication[i].time, Medication[i].frequency, x, false) + i}>
+        <View key={getDate(Medication[i].firstPromptTime, Medication[i].frequency, x, false) + i}>
           <View
             style={[
               GeneralStyles.card,
@@ -37,7 +37,7 @@ export default function MedCalendar({ user }) {
               ]}
             >
               <Text style={[MedCalendarStyles.leftColTitle, GeneralStyles.blue, GeneralStyles.bold]}>
-                {getDay(getDate(Medication[i].time, Medication[i].frequency, x, false))}
+                {getDay(getDate(Medication[i].firstPromptTime, Medication[i].frequency, x, false))}
               </Text>
             </View>
             <View style={MedCalendarStyles.rightCol}>
@@ -48,7 +48,7 @@ export default function MedCalendar({ user }) {
                 <Text style={[GeneralStyles.blue, GeneralStyles.fontSmall, GeneralStyles.bold]}> at</Text>
               </View>
               <Text style={[GeneralStyles.blue, GeneralStyles.fontMed, GeneralStyles.bold]}>
-                {getDate(Medication[i].time, Medication[i].frequency, x, true)}
+                {getDate(Medication[i].firstPromptTime, Medication[i].frequency, x, true)}
               </Text>
             </View>
           </View>
