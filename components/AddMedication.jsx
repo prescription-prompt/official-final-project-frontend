@@ -15,8 +15,6 @@ Notifications.setNotificationHandler({
   }),
 });
 
-console.log(Date.now() / 1000 - 1652179892);
-
 export default function AddMedication({ User }) {
   const [Medication, setMedication] = useState('');
   const [Dosage, setDosage] = useState('');
@@ -100,7 +98,7 @@ export default function AddMedication({ User }) {
       firstDose: firstDose,
       note: Note,
     });
-    console.log(Frequency * increment);
+
     await Notifications.scheduleNotificationAsync({
       content: {
         title: 'Medication Alert',
