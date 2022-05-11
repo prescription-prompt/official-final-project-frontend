@@ -1,4 +1,4 @@
-import { ScrollView, Image, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { ScrollView, Image, Text, TextInput, TouchableOpacity, Alert, View } from 'react-native';
 import { GeneralStyles, SignInStyles } from '../styles/Styles';
 import { useState } from 'react';
 import axios from 'axios';
@@ -15,7 +15,7 @@ export default function SignIn({ setLoggedIn, setPage, setUser }) {
       'The information on this app is intended for use solely by yourself and can only be as accurate as the data inputted. If you are ever in any doubt about information you read or you are unsure what to do, you should consult a qualified medical practitioner, such as your own GP. While every effort has been made to ensure that the information contained on this app is correct and up-to-date, this cannot be guaranteed. The creators of this app cannot be held responsible for harm, loss or damage resulting from inaccuracies, or actions taken by persons in response to using Prescription Prompt.',
       [{ text: 'ACCEPT', style: 'default' }]
     );
-    const { data } = await axios.post(`http://192.168.0.8:9090/api/users/`, {
+    const { data } = await axios.post(`http://192.168.1.70:9090/api/users/`, {
       firstName: FirstName,
       lastName: LastName,
       email: Email,
@@ -27,11 +27,13 @@ export default function SignIn({ setLoggedIn, setPage, setUser }) {
   };
 
   return (
-    <ScrollView style={[GeneralStyles.fullScreen, GeneralStyles.mt50]}>
-      <ScrollView style={[GeneralStyles.card, GeneralStyles.cardSmall, GeneralStyles.mb20]}>
-        <Image style={SignInStyles.image} source={require('../assets/PP_logo.png')} />
-      </ScrollView>
-      <ScrollView style={[GeneralStyles.card, GeneralStyles.mb20]}>
+    <ScrollView
+      style={[GeneralStyles.fullScreen, GeneralStyles.mt50, { marginBottom: Platform.OS === 'ios' ? 400 : 0 }]}
+    >
+      <View style={[GeneralStyles.card, GeneralStyles.cardSmall, GeneralStyles.mb20]}>
+        <Image style={SignInStyles.image} source={require('../assets/logo.png')} />
+      </View>
+      <View style={[GeneralStyles.card, GeneralStyles.mb20]}>
         <TextInput
           style={GeneralStyles.textInput}
           placeholder='First Name'
@@ -67,15 +69,15 @@ export default function SignIn({ setLoggedIn, setPage, setUser }) {
         <TouchableOpacity style={GeneralStyles.outlineBtn} onPress={() => signIn()}>
           <Text style={GeneralStyles.outlineBtnText}>CREATE AN ACCOUNT</Text>
         </TouchableOpacity>
-      </ScrollView>
+      </View>
       <Text style={[GeneralStyles.blue, GeneralStyles.bold, GeneralStyles.textCenter, GeneralStyles.mb5]}>
         Already have an account?
       </Text>
-      <ScrollView style={[GeneralStyles.half, GeneralStyles.center]}>
+      <View style={[GeneralStyles.half, GeneralStyles.center]}>
         <TouchableOpacity onPress={() => setPage('SignIn')} style={GeneralStyles.btn}>
           <Text style={GeneralStyles.btnText}>SIGN IN</Text>
         </TouchableOpacity>
-      </ScrollView>
+      </View>
     </ScrollView>
   );
 }
