@@ -36,6 +36,7 @@ export default function SignIn({ setLoggedIn, setPage, setUser }) {
           style={GeneralStyles.textInput}
           placeholder='Password'
           autoCapitalize='none'
+          secureTextEntry={true}
           value={Password}
           onChange={(e) => setPassword(e.nativeEvent.text)}
         ></TextInput>
