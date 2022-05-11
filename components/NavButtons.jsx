@@ -14,7 +14,7 @@ export default function NavButtons({ setPage }) {
       </TouchableOpacity>
       <TouchableOpacity
         style={[GeneralStyles.card, GeneralStyles.cardHalf, GeneralStyles.cardHalfRight]}
-        onPress={() => setPage('AddMedication')}
+        onPress={() => setPage('MedicationList')}
       >
         <Text style={[GeneralStyles.cardSubTitle, GeneralStyles.white]}>List Prescriptions</Text>
         <Text style={[GeneralStyles.fontMed, GeneralStyles.white, GeneralStyles.bold]}>
