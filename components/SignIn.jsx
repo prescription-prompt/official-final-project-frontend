@@ -1,4 +1,4 @@
-import { ScrollView, Image, Text, TextInput, TouchableOpacity } from 'react-native';
+import { ScrollView, Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { GeneralStyles, SignInStyles } from '../styles/Styles';
 import { useState } from 'react';
 import { getUserByEmail } from '../utils/api';
@@ -21,11 +21,13 @@ export default function SignIn({ setLoggedIn, setPage, setUser }) {
   };
 
   return (
-    <ScrollView style={[GeneralStyles.fullScreen, GeneralStyles.mt50]}>
+    <ScrollView
+      style={[GeneralStyles.fullScreen, GeneralStyles.mt50, { marginBottom: Platform.OS === 'ios' ? 400 : 0 }]}
+    >
       <ScrollView style={[GeneralStyles.card, GeneralStyles.cardSmall, GeneralStyles.mb20]}>
-        <Image style={SignInStyles.image} source={require('../assets/PP_logo.png')} />
+        <Image style={SignInStyles.image} source={require('../assets/logo.png')} />
       </ScrollView>
-      <ScrollView style={[GeneralStyles.card, GeneralStyles.mb20]}>
+      <View style={[GeneralStyles.card, GeneralStyles.mb20]}>
         <TextInput
           style={GeneralStyles.textInput}
           placeholder='Email Address'
@@ -46,15 +48,15 @@ export default function SignIn({ setLoggedIn, setPage, setUser }) {
         <TouchableOpacity style={GeneralStyles.outlineBtn} onPress={() => SignIn()}>
           <Text style={GeneralStyles.outlineBtnText}>SIGN IN</Text>
         </TouchableOpacity>
-      </ScrollView>
-      <ScrollView style={[GeneralStyles.half, GeneralStyles.center]}>
+      </View>
+      <View style={[GeneralStyles.half, GeneralStyles.center]}>
         <Text style={[GeneralStyles.blue, GeneralStyles.bold, GeneralStyles.textCenter, GeneralStyles.mb5]}>
           Dont have an account?
         </Text>
         <TouchableOpacity onPress={() => setPage('SignUp')} style={GeneralStyles.btn}>
           <Text style={GeneralStyles.btnText}>CREATE AN ACCOUNT</Text>
         </TouchableOpacity>
-      </ScrollView>
+      </View>
     </ScrollView>
   );
 }

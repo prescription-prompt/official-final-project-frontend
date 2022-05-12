@@ -1,4 +1,4 @@
-import { ScrollView, Image, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { ScrollView, Image, Text, TextInput, TouchableOpacity, Alert, View } from 'react-native';
 import { GeneralStyles, SignInStyles } from '../styles/Styles';
 import { useState } from 'react';
 import { postUser } from '../utils/api';
@@ -32,11 +32,13 @@ export default function SignIn({ setLoggedIn, setPage, setUser }) {
   };
 
   return (
-    <ScrollView style={[GeneralStyles.fullScreen, GeneralStyles.mt50]}>
-      <ScrollView style={[GeneralStyles.card, GeneralStyles.cardSmall, GeneralStyles.mb20]}>
-        <Image style={SignInStyles.image} source={require('../assets/PP_logo.png')} />
-      </ScrollView>
-      <ScrollView style={[GeneralStyles.card, GeneralStyles.mb20]}>
+    <ScrollView
+      style={[GeneralStyles.fullScreen, GeneralStyles.mt50, { marginBottom: Platform.OS === 'ios' ? 400 : 0 }]}
+    >
+      <View style={[GeneralStyles.card, GeneralStyles.cardSmall, GeneralStyles.mb20]}>
+        <Image style={SignInStyles.image} source={require('../assets/logo.png')} />
+      </View>
+      <View style={[GeneralStyles.card, GeneralStyles.mb20]}>
         <TextInput
           style={GeneralStyles.textInput}
           placeholder='First Name'
@@ -82,15 +84,15 @@ export default function SignIn({ setLoggedIn, setPage, setUser }) {
         <TouchableOpacity style={GeneralStyles.outlineBtn} onPress={() => signIn()}>
           <Text style={GeneralStyles.outlineBtnText}>CREATE AN ACCOUNT</Text>
         </TouchableOpacity>
-      </ScrollView>
+      </View>
       <Text style={[GeneralStyles.blue, GeneralStyles.bold, GeneralStyles.textCenter, GeneralStyles.mb5]}>
         Already have an account?
       </Text>
-      <ScrollView style={[GeneralStyles.half, GeneralStyles.center]}>
+      <View style={[GeneralStyles.half, GeneralStyles.center]}>
         <TouchableOpacity onPress={() => setPage('SignIn')} style={GeneralStyles.btn}>
           <Text style={GeneralStyles.btnText}>SIGN IN</Text>
         </TouchableOpacity>
-      </ScrollView>
+      </View>
     </ScrollView>
   );
 }

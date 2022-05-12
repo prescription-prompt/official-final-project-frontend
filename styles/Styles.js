@@ -6,8 +6,9 @@ export const GeneralStyles = StyleSheet.create({
   },
   fullScreen: {
     height: '100%',
-    width: '100%',
-    padding: 20,
+    width: '90%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
   half: {
     width: '50%',
@@ -52,18 +53,21 @@ export const GeneralStyles = StyleSheet.create({
   p10: {
     padding: 10,
   },
+  pb10: {
+    paddingBottom: 5,
+  },
   heading: {
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: 'bold',
   },
   fontLarge: {
-    fontSize: 28,
+    fontSize: 26,
   },
   fontMed: {
-    fontSize: 20,
+    fontSize: 16,
   },
   fontSmall: {
-    fontSize: 12,
+    fontSize: 11,
   },
   flex: {
     display: 'flex',
@@ -90,8 +94,9 @@ export const GeneralStyles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   cardSmall: {
-    marginLeft: 60,
-    marginRight: 60,
+    width: 250,
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
   cardHalf: {
     width: '48%',
@@ -143,6 +148,10 @@ export const GeneralStyles = StyleSheet.create({
     color: '#ffffff',
     textAlign: 'center',
   },
+  borderBottom: {
+    borderColor: '#ffffff',
+    borderBottomWidth: 2,
+  },
 });
 
 export const HeaderStyles = StyleSheet.create({
@@ -150,7 +159,7 @@ export const HeaderStyles = StyleSheet.create({
     display: 'flex',
     marginTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
     paddingTop: 20,
-    paddingBottom: 20,
+    paddingBottom: 10,
   },
   titleBar: {
     flexDirection: 'row',
@@ -175,7 +184,7 @@ export const HeaderStyles = StyleSheet.create({
     marginTop: 20,
     padding: 20,
   },
-  menu_button: {
+  menuButton: {
     marginBottom: 20,
     paddingBottom: 10,
     width: '100%',
@@ -183,6 +192,9 @@ export const HeaderStyles = StyleSheet.create({
     borderBottomWidth: 2,
     color: '#ffffff',
     fontWeight: 'bold',
+  },
+  btn: {
+    padding: 20,
   },
 });
 
@@ -204,15 +216,21 @@ export const MedCalendarStyles = StyleSheet.create({
     marginRight: 'auto',
   },
   height: {
-    height: '50%',
+    height: 400,
+  },
+  card: {
+    paddingBottom: 10,
   },
 });
 
 export const SignInStyles = StyleSheet.create({
   image: {
-    alignSelf: 'center',
-    width: 220,
-    height: 120,
+    alignItems: 'center',
+    width: 150,
+    height: undefined,
+    aspectRatio: 1.9,
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
 });
 
@@ -243,6 +261,7 @@ export const AddMedicationStyles = StyleSheet.create({
     backgroundColor: '#ffffff',
     borderBottomRightRadius: 0,
     borderTopRightRadius: 0,
+    height: 50,
   },
   splitRight: {
     width: '40%',
@@ -254,6 +273,9 @@ export const AddMedicationStyles = StyleSheet.create({
     borderTopLeftRadius: 0,
     borderBottomLeftRadius: 0,
     borderRadius: 10,
+    height: 50,
+    justifyContent: 'center',
+    paddingLeft: 5,
   },
   dropdown: {
     color: '#ffffff',
@@ -267,6 +289,9 @@ export const AddMedicationStyles = StyleSheet.create({
     borderColor: '#005eb8',
     backgroundColor: '#ffffff',
     borderRadius: 10,
+    height: 50,
+    justifyContent: 'center',
+    paddingLeft: 5,
   },
   splitThirdLeft: {
     borderTopRightRadius: 0,
