@@ -1,7 +1,7 @@
 import { Text, View, ScrollView } from 'react-native';
 import { useState, useEffect } from 'react';
 import { MedCalendarStyles, GeneralStyles } from '../styles/Styles';
-import axios from 'axios';
+import { getUserPrescriptions } from '../utils/api';
 
 export default function MedCalendar({ user, setReminders, Reminders }) {
   const [Medication, setMedication] = useState([]);
@@ -15,11 +15,11 @@ export default function MedCalendar({ user, setReminders, Reminders }) {
   }, []);
 
   useEffect(() => {
-    const makeAsyncCall = async () => {
-      const { data } = await axios.get(`http://192.168.10.185:9090/api/prescriptions/user/${user._id}`);
-      setMedication(data.prescriptions);
+    const makeAsync = async () => {
+      const data = await getUserPrescriptions(user);
+      setMedication(data);
     };
-    makeAsyncCall().catch((err) => console.log(err));
+    makeAsync();
   }, []);
 
   useEffect(() => {

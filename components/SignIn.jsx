@@ -1,8 +1,7 @@
 import { ScrollView, Image, Text, TextInput, TouchableOpacity } from 'react-native';
 import { GeneralStyles, SignInStyles } from '../styles/Styles';
 import { useState } from 'react';
-import axios from 'axios';
-import { View } from 'react-native-web';
+import { getUserByEmail } from '../utils/api';
 
 export default function SignIn({ setLoggedIn, setPage, setUser }) {
   // Set default Email and Password for testing
@@ -10,12 +9,15 @@ export default function SignIn({ setLoggedIn, setPage, setUser }) {
   const [Password, setPassword] = useState('DEO28HDM4DF');
 
   const SignIn = async () => {
-    const { data } = await axios.get(`http://192.168.10.185:9090/api/users/${Email}`);
-    if (Password === data.user.password) {
-      setUser(data.user);
-      setLoggedIn(true);
-      setPage('Homepage');
-    }
+    const makeAsync = async () => {
+      const data = await getUserByEmail(Email);
+      if (Password === data.user.password) {
+        setUser(data.user);
+        setLoggedIn(true);
+        setPage('Homepage');
+      }
+    };
+    makeAsync();
   };
 
   return (
