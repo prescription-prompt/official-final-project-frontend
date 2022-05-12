@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View, StyleSheet, ScrollView } from 'react-native';
 import { getPrescriptionList } from '../utils/api';
+import { GeneralStyles } from '../styles/Styles';
 
 const MedicationList = ({ User }) => {
   const [medicationList, setMedicationList] = useState([]);
@@ -12,15 +13,60 @@ const MedicationList = ({ User }) => {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <View>
       <ScrollView>
         {medicationList.map((medicine) => {
           return (
-            <View style={styles.yes}>
-              <Text>Name: {medicine.name}</Text>
-              <Text>Dosage: {medicine.dosage}</Text>
-              <Text>Amount: {medicine.amount}</Text>
-              <Text>Notes: {medicine.notes}</Text>
+            <View key={medicine.name + Math.random()} style={GeneralStyles.card}>
+              <Text style={[GeneralStyles.cardSubTitle, GeneralStyles.white]}>Prescription List</Text>
+              <Text style={[GeneralStyles.white, GeneralStyles.bold]}>Name:</Text>
+              <Text
+                style={[
+                  GeneralStyles.fontMed,
+                  GeneralStyles.white,
+                  GeneralStyles.bold,
+                  GeneralStyles.borderBottom,
+                  GeneralStyles.pb5,
+                ]}
+              >
+                {medicine.name}
+              </Text>
+              <Text style={[GeneralStyles.white, GeneralStyles.bold, GeneralStyles.mt10]}>Dosage:</Text>
+              <Text
+                style={[
+                  GeneralStyles.fontMed,
+                  GeneralStyles.white,
+                  GeneralStyles.bold,
+                  GeneralStyles.borderBottom,
+                  GeneralStyles.pb5,
+                ]}
+              >
+                {medicine.dosage}
+              </Text>
+              <Text style={[GeneralStyles.white, GeneralStyles.bold, GeneralStyles.mt10]}>Amount:</Text>
+              <Text
+                style={[
+                  GeneralStyles.fontMed,
+                  GeneralStyles.white,
+                  GeneralStyles.bold,
+                  GeneralStyles.borderBottom,
+                  GeneralStyles.pb10,
+                ]}
+              >
+                {medicine.amount}
+              </Text>
+              <Text style={[GeneralStyles.white, GeneralStyles.bold, GeneralStyles.mt10]}>Notes:</Text>
+              <Text
+                style={[
+                  GeneralStyles.fontMed,
+                  GeneralStyles.white,
+                  GeneralStyles.bold,
+                  GeneralStyles.borderBottom,
+                  GeneralStyles.pb5,
+                ]}
+              >
+                {medicine.notes}
+              </Text>
             </View>
           );
         })}

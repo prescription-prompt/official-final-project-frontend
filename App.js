@@ -22,21 +22,22 @@ export default function App() {
     if (LoggedIn && Page === 'AddMedication') setTitle('Add Medication');
     if (LoggedIn && Page === 'MedicationList') setTitle('Medication List');
   }, [Page, LoggedIn]);
-
   return (
     <>
       <StatusBar style='auto' />
-      <SafeAreaView style={GeneralStyles.fullScreen}>
-        <Header title={Title} loggedIn={LoggedIn} setLoggedIn={setLoggedIn} page={Page} setPage={setPage} />
-        {!LoggedIn
-          ? Page === 'SignIn' && <SignIn setLoggedIn={setLoggedIn} setPage={setPage} setUser={setUser} />
-          : null}
-        {!LoggedIn
-          ? Page === 'SignUp' && <SignUp setLoggedIn={setLoggedIn} setPage={setPage} setUser={setUser} />
-          : null}
-        {LoggedIn ? Page === 'Homepage' && <HomePage setPage={setPage} user={User} /> : null}
-        {LoggedIn ? Page === 'AddMedication' && <AddMedication User={User} /> : null}
-        {LoggedIn ? Page === 'MedicationList' && <MedicationList User={User} /> : null}
+      <SafeAreaView>
+        <ScrollView style={GeneralStyles.fullScreen}>
+          <Header title={Title} loggedIn={LoggedIn} setLoggedIn={setLoggedIn} page={Page} setPage={setPage} />
+          {!LoggedIn
+            ? Page === 'SignIn' && <SignIn setLoggedIn={setLoggedIn} setPage={setPage} setUser={setUser} />
+            : null}
+          {!LoggedIn
+            ? Page === 'SignUp' && <SignUp setLoggedIn={setLoggedIn} setPage={setPage} setUser={setUser} />
+            : null}
+          {LoggedIn ? Page === 'Homepage' && <HomePage setPage={setPage} user={User} /> : null}
+          {LoggedIn ? Page === 'AddMedication' && <AddMedication User={User} /> : null}
+          {LoggedIn ? Page === 'MedicationList' && <MedicationList User={User} /> : null}
+        </ScrollView>
       </SafeAreaView>
     </>
   );

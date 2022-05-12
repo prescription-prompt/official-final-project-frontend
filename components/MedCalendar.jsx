@@ -122,7 +122,7 @@ export default function MedCalendar({ user, setReminders, Reminders }) {
     setReminders(reminders);
   }, [Medication, time]);
   return (
-    <View style={[GeneralStyles.card, MedCalendarStyles.height, MedCalendarStyles.gradient]}>
+    <View style={[GeneralStyles.card, MedCalendarStyles.height, MedCalendarStyles.card]}>
       <Text style={[GeneralStyles.cardSubTitle, GeneralStyles.white]}>Prescription Calendar</Text>
       <ScrollView>{Reminders}</ScrollView>
     </View>

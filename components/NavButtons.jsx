@@ -17,9 +17,7 @@ export default function NavButtons({ setPage }) {
         onPress={() => setPage('MedicationList')}
       >
         <Text style={[GeneralStyles.cardSubTitle, GeneralStyles.white]}>List Prescriptions</Text>
-        <Text style={[GeneralStyles.fontMed, GeneralStyles.white, GeneralStyles.bold]}>
-          See all of your Prescriptions
-        </Text>
+        <Text style={[GeneralStyles.fontMed, GeneralStyles.white, GeneralStyles.bold]}>See all Prescriptions</Text>
       </TouchableOpacity>
     </View>
   );
