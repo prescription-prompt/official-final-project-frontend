@@ -9,7 +9,7 @@ export default function SignIn({ setLoggedIn, setPage, setUser }) {
   const [Password, setPassword] = useState('DEO28HDM4DF');
 
   const SignIn = async () => {
-    const { data } = await axios.get(`http://192.168.1.70:9090/api/users/${Email}`);
+    const { data } = await axios.get(`http://192.168.10.185:9090/api/users/${Email}`);
     if (Password === data.user.password) {
       setUser(data.user);
       setLoggedIn(true);
@@ -37,6 +37,7 @@ export default function SignIn({ setLoggedIn, setPage, setUser }) {
           style={GeneralStyles.textInput}
           placeholder='Password'
           autoCapitalize='none'
+          secureTextEntry={true}
           value={Password}
           onChange={(e) => setPassword(e.nativeEvent.text)}
         ></TextInput>
