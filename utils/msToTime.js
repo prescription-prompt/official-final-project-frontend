@@ -10,8 +10,8 @@ export default msToTime = (duration) => {
   seconds = seconds < 10 ? '0' + seconds : seconds;
   let time = ``;
   if (days > 0) time += `${days} days`;
-  if (minutes > 0) time += ` ${minutes}m`;
   if (hours > 0) time += ` ${hours}h`;
+  if (minutes > 0) time += ` ${minutes}m`;
   if (seconds > 0) time += ` ${seconds}s`;
   return time;
 };
